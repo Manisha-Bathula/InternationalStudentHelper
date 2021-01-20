@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "940733553081",
+    "project_id": "internationalstudenthelp-90361",
+    "storage_bucket": "internationalstudenthelp-90361.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:940733553081:android:4f3182c3bdc76f538ffe68",
+        "android_client_info": {
+          "package_name": "com.example.internationalstudenthelper"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "940733553081-tao7tmsig5pn2bg5t0aambpgte0e46oe.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.internationalstudenthelper",
+            "certificate_hash": "45f6eba412a20dd63830b49db09352a13f3140ea"
+          }
+        },
+        {
+          "client_id": "940733553081-a2n9jhfmbvmtbo37rfmpvnr4rted5lon.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpTHcutR-Zqu2WcBcojGxrQj5TPVj21Bw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "940733553081-a2n9jhfmbvmtbo37rfmpvnr4rted5lon.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
