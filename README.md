@@ -1,2 +1,0 @@
-# InternationalStudentHelper
-Work Integrated Project
