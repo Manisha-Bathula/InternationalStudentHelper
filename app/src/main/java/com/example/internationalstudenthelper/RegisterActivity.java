@@ -40,48 +40,48 @@ public class RegisterActivity extends AppCompatActivity {
         fAuth=FirebaseAuth.getInstance();
 
 
-//        //ONCLICKINGG REGISTER BUTTON
-//        mRegisterBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                String email = mEmail.getText().toString().trim();
-//                String password = mPassword.getText().toString().trim();
-//
-////                //IF CURRENT USER, THEN DIRECTLY NAVIGATE TO MAINACTIVITY
-////                if(fAuth.getCurrentUser() != null){
-////                    startActivity(new Intent(getApplicationContext(),MainActivity.class));
-////                    finish();
-////                }
-//
-//                //VALIDATION OF EMAIL AND PASSWORD FIELDS
-//                if(TextUtils.isEmpty(email)){
-//                    mEmail.setError("Email is Required.");
-//                    return;
+        //ONCLICKINGG REGISTER BUTTON
+        mRegisterBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String email = mEmail.getText().toString().trim();
+                String password = mPassword.getText().toString().trim();
+
+//                //IF CURRENT USER, THEN DIRECTLY NAVIGATE TO MAINACTIVITY
+//                if(fAuth.getCurrentUser() != null){
+//                    startActivity(new Intent(getApplicationContext(),MainActivity.class));
+//                    finish();
 //                }
-//
-//                if(TextUtils.isEmpty(password)){
-//                    mPassword.setError("Password is Required");
-//                    return;
-//                }
-//
-//                if(password.length() < 6){
-//                    mPassword.setError("Password must be >= 6 Characters");
-//                    return;
-//                }
-//
-//                //REGISTER USER IN FIREBASE
-//                fAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<AuthResult> task) {
-//                        if(task.isSuccessful()){
-//                            Toast.makeText(RegisterActivity.this, "User Created", Toast.LENGTH_SHORT).show();
-//                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
-//                        }else{
-//                            Toast.makeText(RegisterActivity.this, "Error ! " +task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-//                        }
-//                    }
-//                });
-//            }
-//        });
+
+                //VALIDATION OF EMAIL AND PASSWORD FIELDS
+                if(TextUtils.isEmpty(email)){
+                    mEmail.setError("Email is Required.");
+                    return;
+                }
+
+                if(TextUtils.isEmpty(password)){
+                    mPassword.setError("Password is Required");
+                    return;
+                }
+
+                if(password.length() < 6){
+                    mPassword.setError("Password must be >= 6 Characters");
+                    return;
+                }
+
+                //REGISTER USER IN FIREBASE
+                fAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()){
+                            Toast.makeText(RegisterActivity.this, "User Created", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                        }else{
+                            Toast.makeText(RegisterActivity.this, "Error ! " +task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            }
+        });
     }
 }
