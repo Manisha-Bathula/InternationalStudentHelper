@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#5EFFEB3B"
+    android:background="@color/BackgroundColor"
     android:padding="10dp"
     android:orientation="vertical"
     tools:context=".RegisterActivity">
@@ -17,7 +16,7 @@
         android:fontFamily="@font/aclonica"
         android:gravity="center"
         android:text="Create New Account"
-        android:textColor="#E91E63"
+        android:textColor="@color/TextWhite"
         android:textSize="18sp" />
 
     <EditText
@@ -96,7 +95,7 @@
         android:gravity="center"
         android:onClick="login"
         android:text="Already registered??? Login Here"
-        android:textColor="#009688" />
+        android:textColor="@color/TextWhite" />
 
 
 </LinearLayout>
