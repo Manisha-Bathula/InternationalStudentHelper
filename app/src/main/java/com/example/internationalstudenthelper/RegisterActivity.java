@@ -3,6 +3,8 @@ package com.example.internationalstudenthelper;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -11,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -23,6 +26,8 @@ public class RegisterActivity extends AppCompatActivity {
     Button mRegisterBtn;
     TextView mLogibBtn;
     FirebaseAuth fAuth;
+    private AlertDialog.Builder builder;
+
 
 
     @Override
@@ -43,48 +48,87 @@ public class RegisterActivity extends AppCompatActivity {
         mRegisterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = mEmail.getText().toString().trim();
-                String password = mPassword.getText().toString().trim();
+                final String email = mEmail.getText().toString().trim();
+                final String password = mPassword.getText().toString().trim();
 
-//                //IF CURRENT USER, THEN DIRECTLY NAVIGATE TO MAINACTIVITY
-//                if(fAuth.getCurrentUser() != null){
-//                    startActivity(new Intent(getApplicationContext(),MainActivity.class));
-//                    finish();
-//                }
+                //IF CURRENT USER, THEN DIRECTLY NAVIGATE TO MAINACTIVITY
+                if (fAuth.getCurrentUser() != null) {
+                    startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
+                    //Toast.makeText(this, "Existing user", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
 
                 //VALIDATION OF EMAIL AND PASSWORD FIELDS
-                if(TextUtils.isEmpty(email)){
+                if (TextUtils.isEmpty(email)) {
                     mEmail.setError("Email is Required.");
                     return;
                 }
 
-                if(TextUtils.isEmpty(password)){
+                if (TextUtils.isEmpty(password)) {
                     mPassword.setError("Password is Required");
                     return;
                 }
 
-                if(password.length() < 6){
+                if (password.length() < 6) {
                     mPassword.setError("Password must be >= 6 Characters");
                     return;
                 }
 
+
+                AlertDialog alertDialog = new AlertDialog.Builder(RegisterActivity.this).create();
+                alertDialog.setTitle("Alert");
+                alertDialog.setMessage("User is created");
+                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Ok",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                //REGISTER USER IN FIREBASE
+                                fAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<AuthResult> task) {
+                                        if (task.isSuccessful()) {
+
+                                            Toast.makeText(RegisterActivity.this, "User Created", Toast.LENGTH_SHORT).show();
+                                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                                        } else {
+                                            Toast.makeText(RegisterActivity.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
+
+                            }
+                        });
+
+                alertDialog.show();
+
+
                 //REGISTER USER IN FIREBASE
-                fAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            Toast.makeText(RegisterActivity.this, "User Created", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                        }else{
-                            Toast.makeText(RegisterActivity.this, "Error ! " +task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
+//                fAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<AuthResult> task) {
+//                        if(task.isSuccessful()){
+//                            //displayAlertDialog();
+//
+//
+//
+//
+//
+//                            //Toast.makeText(RegisterActivity.this, "User Created", Toast.LENGTH_SHORT).show();
+//                            //startActivity(new Intent(getApplicationContext(),MainActivity.class));
+//                        }else{
+//                            Toast.makeText(RegisterActivity.this, "Error ! " +task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//                });
             }
         });
-    }
 
-    public void login(View view) {
-        startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
-    }
-}
+            }
+
+
+            public void login(View view) {
+                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+            }
+
+
+        }
