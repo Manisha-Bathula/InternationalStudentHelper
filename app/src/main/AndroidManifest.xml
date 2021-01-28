@@ -15,17 +15,17 @@
         android:roundIcon="@drawable/applogo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DashboardActivity"></activity>
+        <activity android:name="com.gbcish.DashboardActivity"></activity>
         <!--
                Set to true if your app is Standalone, that is, it does not require the handheld
                app to run.
         -->
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".LoginActivity">
+        <activity android:name="com.gbcish.RegisterActivity" />
+        <activity android:name="com.gbcish.LoginActivity">
 
         </activity>
         <activity
-            android:name=".SplashActivity"
+            android:name="com.gbcish.SplashActivity"
             android:theme="@style/NoTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

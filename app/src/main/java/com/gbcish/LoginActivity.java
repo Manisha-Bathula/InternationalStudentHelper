@@ -1,4 +1,4 @@
-package com.example.internationalstudenthelper;
+package com.gbcish;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -16,6 +16,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.internationalstudenthelper.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
