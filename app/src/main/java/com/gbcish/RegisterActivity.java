@@ -28,6 +28,7 @@ public class RegisterActivity extends AppCompatActivity {
     TextView mLogibBtn;
     FirebaseAuth fAuth;
     private AlertDialog.Builder builder;
+    String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
 
 
@@ -52,76 +53,124 @@ public class RegisterActivity extends AppCompatActivity {
                 final String email = mEmail.getText().toString().trim();
                 final String password = mPassword.getText().toString().trim();
 
-                //IF CURRENT USER, THEN DIRECTLY NAVIGATE TO MAINACTIVITY
-                if (fAuth.getCurrentUser() != null) {
-                    startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
-                    //Toast.makeText(this, "Existing user", Toast.LENGTH_SHORT).show();
-                    finish();
-                }
-
-                //VALIDATION OF EMAIL AND PASSWORD FIELDS
-                if (TextUtils.isEmpty(email)) {
-                    mEmail.setError("Email is Required.");
+                if(TextUtils.isEmpty(email) && TextUtils.isEmpty(password)){
+                    AlertDialog alertDialog = new AlertDialog.Builder(RegisterActivity.this).create();
+                    alertDialog.setTitle("Error!");
+                    alertDialog.setMessage("Email & Password are required");
+                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            });
+                    alertDialog.show();
                     return;
                 }
+                //VALIDATION OF EMAIL AND PASSWORD FIELDS
+                else if (TextUtils.isEmpty(email)) {
+
+                        mEmail.setError("Email is Required.");
+                        AlertDialog alertDialog = new AlertDialog.Builder(RegisterActivity.this).create();
+                        alertDialog.setTitle("Error!");
+                        alertDialog.setMessage("Email is required");
+                        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
+                                    }
+                                });
+                        alertDialog.show();
+                        return;
+                    }
+                // onClick of button perform this simplest code.
+                else if (email.matches(emailPattern))
+                {
+                    Toast.makeText(getApplicationContext(),"valid email address",Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    AlertDialog alertDialog = new AlertDialog.Builder(RegisterActivity.this).create();
+                    alertDialog.setTitle("Error!");
+                    alertDialog.setMessage("Invalid Email Address");
+                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            });
+                    alertDialog.show();
+                    //Toast.makeText(getApplicationContext(),"Invalid email address", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
 
                 if (TextUtils.isEmpty(password)) {
                     mPassword.setError("Password is Required");
+                    AlertDialog alertDialog = new AlertDialog.Builder(RegisterActivity.this).create();
+                    alertDialog.setTitle("Error!");
+                    alertDialog.setMessage("Password is required");
+                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            });
+                    alertDialog.show();
                     return;
-                }
+                } else
 
                 if (password.length() < 6) {
                     mPassword.setError("Password must be >= 6 Characters");
+                    AlertDialog alertDialog = new AlertDialog.Builder(RegisterActivity.this).create();
+                    alertDialog.setTitle("Error!");
+                    alertDialog.setMessage("Password must be >= 6 Characters");
+                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            });
+                    alertDialog.show();
                     return;
                 }
 
+                else {
+                    //Alert Box
+                    AlertDialog alertDialog = new AlertDialog.Builder(RegisterActivity.this).create();
+                    alertDialog.setTitle("Alert");
+                    alertDialog.setMessage("User is created");
+                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Ok",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
 
-                AlertDialog alertDialog = new AlertDialog.Builder(RegisterActivity.this).create();
-                alertDialog.setTitle("Alert");
-                alertDialog.setMessage("User is created");
-                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Ok",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
+                                    //REGISTER USER IN FIREBASE
+                                    fAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<AuthResult> task) {
+                                            if (task.isSuccessful()) {
 
-                                //REGISTER USER IN FIREBASE
-                                fAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<AuthResult> task) {
-                                        if (task.isSuccessful()) {
-
-                                            Toast.makeText(RegisterActivity.this, "User Created", Toast.LENGTH_SHORT).show();
-                                            startActivity(new Intent(getApplicationContext(), SplashActivity.class));
-                                        } else {
-                                            Toast.makeText(RegisterActivity.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(RegisterActivity.this, "User Created", Toast.LENGTH_SHORT).show();
+                                                //startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
+                                            } else {
+                                                Toast.makeText(RegisterActivity.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                            }
                                         }
-                                    }
-                                });
+                                    });
 
-                            }
-                        });
+                                }
+                            });
 
-                alertDialog.show();
+                    alertDialog.show();
 
+                    mFullName.getText().clear();
+                    mEmail.getText().clear();
+                    mPassword.getText().clear();
+                    mPhone.getText().clear();
+                }
 
-                //REGISTER USER IN FIREBASE
-//                fAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<AuthResult> task) {
-//                        if(task.isSuccessful()){
-//                            //displayAlertDialog();
-//
-//
-//
-//
-//
-//                            //Toast.makeText(RegisterActivity.this, "User Created", Toast.LENGTH_SHORT).show();
-//                            //startActivity(new Intent(getApplicationContext(),MainActivity.class));
-//                        }else{
-//                            Toast.makeText(RegisterActivity.this, "Error ! " +task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-//                        }
-//                    }
-//                });
-            }
+              startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
+
+           }
         });
 
             }
