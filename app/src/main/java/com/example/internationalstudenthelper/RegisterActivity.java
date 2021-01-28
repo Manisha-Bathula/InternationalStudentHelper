@@ -89,7 +89,7 @@ public class RegisterActivity extends AppCompatActivity {
                                         if (task.isSuccessful()) {
 
                                             Toast.makeText(RegisterActivity.this, "User Created", Toast.LENGTH_SHORT).show();
-                                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                                            startActivity(new Intent(getApplicationContext(), SplashActivity.class));
                                         } else {
                                             Toast.makeText(RegisterActivity.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                         }
