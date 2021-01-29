@@ -85,7 +85,7 @@ public class RegisterActivity extends AppCompatActivity {
                 // onClick of button perform this simplest code.
                 else if (email.matches(emailPattern))
                 {
-                    Toast.makeText(getApplicationContext(),"valid email address",Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(),"valid email address",Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
@@ -138,8 +138,8 @@ public class RegisterActivity extends AppCompatActivity {
                     //Alert Box
                     AlertDialog alertDialog = new AlertDialog.Builder(RegisterActivity.this).create();
                     alertDialog.setTitle("Alert");
-                    alertDialog.setMessage("User is created");
-                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Ok",
+                    alertDialog.setMessage("Creating new account?");
+                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Yes",
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
 
@@ -148,11 +148,32 @@ public class RegisterActivity extends AppCompatActivity {
                                         @Override
                                         public void onComplete(@NonNull Task<AuthResult> task) {
                                             if (task.isSuccessful()) {
+                                                AlertDialog alertDialog = new AlertDialog.Builder(RegisterActivity.this).create();
+                                                alertDialog.setTitle("Success");
+                                                alertDialog.setMessage("User is created");
+                                                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                                                        new DialogInterface.OnClickListener() {
+                                                            public void onClick(DialogInterface dialog, int which) {
+                                                                dialog.dismiss();
+                                                            }
+                                                        });
+                                                alertDialog.show();
 
-                                                Toast.makeText(RegisterActivity.this, "User Created", Toast.LENGTH_SHORT).show();
-                                                //startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
+                                                //Toast.makeText(RegisterActivity.this, "User Created", Toast.LENGTH_SHORT).show();
+                                                startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
                                             } else {
-                                                Toast.makeText(RegisterActivity.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                                AlertDialog alertDialog = new AlertDialog.Builder(RegisterActivity.this).create();
+                                                alertDialog.setTitle("Error!");
+                                                alertDialog.setMessage(" "+task.getException().getMessage());
+                                                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                                                        new DialogInterface.OnClickListener() {
+                                                            public void onClick(DialogInterface dialog, int which) {
+                                                                dialog.dismiss();
+                                                            }
+                                                        });
+                                                alertDialog.show();
+                                                return;
+                                                //Toast.makeText(RegisterActivity.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                             }
                                         }
                                     });
@@ -168,7 +189,7 @@ public class RegisterActivity extends AppCompatActivity {
                     mPhone.getText().clear();
                 }
 
-              startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
+              //startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
 
            }
         });

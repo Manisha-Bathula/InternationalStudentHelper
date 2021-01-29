@@ -114,6 +114,9 @@ public class LoginActivity extends AppCompatActivity {
 
     //Method for normal validation
     private void loginValidation(String email, String password) {
+
+
+
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -187,25 +190,72 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void setValidation() {
+
         // Check for a valid email address.
         if (et_email.getText().toString().isEmpty()) {
+            AlertDialog alertDialog = new AlertDialog.Builder(LoginActivity.this).create();
+            alertDialog.setTitle("Error!");
+            alertDialog.setMessage("Email is required");
+            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+            alertDialog.show();
             et_email.setError(getResources().getString(R.string.email_error));
             isEmailValid = false;
+            return;
         } else if (!Patterns.EMAIL_ADDRESS.matcher(et_email.getText().toString()).matches()) {
+            AlertDialog alertDialog = new AlertDialog.Builder(LoginActivity.this).create();
+            alertDialog.setTitle("Error!");
+            alertDialog.setMessage("Enter a valid Email ID");
+            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+            alertDialog.show();
             et_email.setError(getResources().getString(R.string.email_error));
             isEmailValid = false;
+            return;
         } else {
             isEmailValid = true;
             et_email.setError(null);
+
         }
 
         // Check for a valid password.
         if (et_password.getText().toString().isEmpty()) {
+            AlertDialog alertDialog = new AlertDialog.Builder(LoginActivity.this).create();
+            alertDialog.setTitle("Error!");
+            alertDialog.setMessage("Password is required");
+            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+            alertDialog.show();
             et_password.setError(getResources().getString(R.string.password_error));
             isPasswordValid = false;
-        } else if (et_password.getText().length() < 6) {
+            return;
+        }
+        else if (et_password.getText().length() < 6) {
+            AlertDialog alertDialog = new AlertDialog.Builder(LoginActivity.this).create();
+            alertDialog.setTitle("Error!");
+            alertDialog.setMessage(" "+getResources().getString(R.string.password_error));
+            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+            alertDialog.show();
             et_password.setError(getResources().getString(R.string.password_error));
             isPasswordValid = false;
+            return;
         } else {
             isPasswordValid = true;
             et_password.setError(null);
