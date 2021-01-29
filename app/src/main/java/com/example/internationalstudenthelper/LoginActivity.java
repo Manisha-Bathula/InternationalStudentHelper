@@ -1,7 +1,6 @@
 package com.example.internationalstudenthelper;
 
 import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -39,7 +38,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText et_email, et_password;
     private SignInButton bt_google_sigin;
     private FirebaseFirestore db;
-    private ProgressDialog progressBar;
+
     private FirebaseAuth mAuth;
     private GoogleSignInClient mGoogleSignInClient;
     private final static int RC_SIGN_IN = 123;
@@ -58,7 +57,7 @@ public class LoginActivity extends AppCompatActivity {
         et_password = findViewById(R.id.et_password);
         bt_google_sigin = findViewById(R.id.bt_google_sigin);
 
-        progressBar = new ProgressDialog(this);
+
         builder = new AlertDialog.Builder(this);
 
         mAuth = com.google.firebase.auth.FirebaseAuth.getInstance();
@@ -85,7 +84,7 @@ public class LoginActivity extends AppCompatActivity {
         bt_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                progressBar.show();
+
                 setValidation();
             }
         });
@@ -96,14 +95,9 @@ public class LoginActivity extends AppCompatActivity {
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
-    private void dismissProgress() {
-        if (progressBar.isShowing()) {
-            progressBar.dismiss();
-        }
-    }
 
     private void LoginAfterValidation(FirebaseUser user) {
-        dismissProgress();
+
         Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
         intent.putExtra("Email", user.getEmail());
         startActivity(intent);
@@ -211,13 +205,16 @@ public class LoginActivity extends AppCompatActivity {
 
         if (isEmailValid && isPasswordValid) {
             loginValidation(et_email.getText().toString(), et_password.getText().toString());
+        } else {
+            displayAlertDialog("Please fill in your Email / Password",
+                    "Field Empty?");
         }
 
     }
 
 
     public void displayAlertDialog(String message, String title) {
-        dismissProgress();
+
         builder.setMessage(message);
 
         //Setting message manually and performing action on button click
