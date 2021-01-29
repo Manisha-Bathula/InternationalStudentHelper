@@ -6,11 +6,11 @@
     android:orientation="vertical"
     android:padding="10dp"
     android:background="@color/BackgroundColor"
-    tools:context=".LoginActivity">
+    tools:context="com.gbcish.LoginActivity">
 
     <ImageView
-        android:layout_width="250dp"
-        android:layout_height="250dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:id="@+id/splash_img"
         android:layout_gravity="center"
         android:src="@drawable/applogo" />
@@ -25,7 +25,7 @@
         android:text="Login"
         android:textStyle="bold"
         android:textColor="@color/TextWhite"
-        android:textSize="38sp" />
+        android:textSize="35sp" />
 
     <EditText
         android:id="@+id/et_email"
@@ -48,7 +48,7 @@
         android:background="#000000"
         android:ems="10"
         android:hint="Password"
-        android:inputType="textEmailAddress"
+        android:inputType="textPassword"
         android:padding="10dp"
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
