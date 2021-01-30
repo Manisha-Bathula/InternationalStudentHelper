@@ -103,6 +103,7 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
         intent.putExtra("Email", user.getEmail());
         startActivity(intent);
+        finish();
 
     }
 

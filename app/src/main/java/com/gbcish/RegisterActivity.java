@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,9 +18,16 @@ import android.widget.Toast;
 
 import com.example.internationalstudenthelper.R;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -29,6 +37,7 @@ public class RegisterActivity extends AppCompatActivity {
     FirebaseAuth fAuth;
     private AlertDialog.Builder builder;
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+    FirebaseFirestore db;
 
 
 
@@ -45,13 +54,16 @@ public class RegisterActivity extends AppCompatActivity {
         mLogibBtn=findViewById(R.id.loginregister);
 
         fAuth=FirebaseAuth.getInstance();
+        db=FirebaseFirestore.getInstance();
 
         //ONCLICKINGG REGISTER BUTTON
         mRegisterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final String name=mFullName.getText().toString().trim();
                 final String email = mEmail.getText().toString().trim();
                 final String password = mPassword.getText().toString().trim();
+                final String phone=mPhone.getText().toString().trim();
 
                 if(TextUtils.isEmpty(email) && TextUtils.isEmpty(password)){
                     AlertDialog alertDialog = new AlertDialog.Builder(RegisterActivity.this).create();
@@ -148,6 +160,8 @@ public class RegisterActivity extends AppCompatActivity {
                                         @Override
                                         public void onComplete(@NonNull Task<AuthResult> task) {
                                             if (task.isSuccessful()) {
+                                                String userID=fAuth.getCurrentUser().getUid();
+                                                AddRegisterData(userID,name,email,password,phone);
                                                 AlertDialog alertDialog = new AlertDialog.Builder(RegisterActivity.this).create();
                                                 alertDialog.setTitle("Success");
                                                 alertDialog.setMessage("User is created");
@@ -160,7 +174,7 @@ public class RegisterActivity extends AppCompatActivity {
                                                 alertDialog.show();
 
                                                 //Toast.makeText(RegisterActivity.this, "User Created", Toast.LENGTH_SHORT).show();
-                                                startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
+                                                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                                             } else {
                                                 AlertDialog alertDialog = new AlertDialog.Builder(RegisterActivity.this).create();
                                                 alertDialog.setTitle("Error!");
@@ -196,8 +210,38 @@ public class RegisterActivity extends AppCompatActivity {
 
             }
 
+    private void AddRegisterData(String userID, String name, String email, String password, String phone) {
+        Map<String,Object> user=new HashMap<>();
+        user.put("Userid",userID);
+        user.put("Name",name);
+        user.put("Email",email);
+        user.put("Phone",phone);
+        user.put("Password",password);
+        user.put("Propic","0");
+        db.collection("User").add(user)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Log.i("jeni","Documents Added with ID:"+documentReference.getId());
+                        Toast.makeText(RegisterActivity.this, "Registered", Toast.LENGTH_SHORT).show();
+                        Intent intent=new Intent(RegisterActivity.this,LoginActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.i("jeni","Error adding document",e);
+                        Toast.makeText(RegisterActivity.this, "Registration Failed", Toast.LENGTH_SHORT).show();
+                    }
+                });
 
-            public void login(View view) {
+
+    }
+
+
+    public void login(View view) {
                 startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
             }
 

@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.internationalstudenthelper">
+    package="com.example.internationalstudenthelper" >
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-
-
-
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -14,19 +11,28 @@
         android:label="GBC ISH"
         android:roundIcon="@drawable/applogo"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name="com.gbcish.DashboardActivity"></activity>
+        android:theme="@style/AppTheme" >
+
+        <activity android:name="com.gbcish.PostActivity" >
+        </activity>
+        <activity android:name="com.gbcish.ExploreActivity" />
+        <activity android:name="com.gbcish.ManageActivity" />
+        <activity
+            android:name="com.gbcish.ProfileActivity"
+            android:theme="@style/NoTheme" />
+        <activity
+            android:name="com.gbcish.DashboardActivity"
+            android:label="@string/title_activity_dashboard"
+            android:theme="@style/AppTheme.NoActionBar" />
         <!--
                Set to true if your app is Standalone, that is, it does not require the handheld
                app to run.
         -->
         <activity android:name="com.gbcish.RegisterActivity" />
-        <activity android:name="com.gbcish.LoginActivity">
-
-        </activity>
+        <activity android:name="com.gbcish.LoginActivity" />
         <activity
             android:name="com.gbcish.SplashActivity"
-            android:theme="@style/NoTheme">
+            android:theme="@style/NoTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
