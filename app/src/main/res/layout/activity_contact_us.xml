@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_margin="10dp"
     android:background="@color/BackgroundColor"
     tools:context="com.gbcish.ContactUsActivity" >
 
@@ -76,9 +75,9 @@
         android:src="@drawable/sms" />
 
     <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="50dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="80dp"
         android:src="@drawable/applogo"
         android:layout_gravity="end"/>
 

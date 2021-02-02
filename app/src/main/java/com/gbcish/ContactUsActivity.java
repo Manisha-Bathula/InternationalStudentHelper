@@ -25,13 +25,10 @@ public class ContactUsActivity extends AppCompatActivity {
         imgsms = findViewById(R.id.ic_sms);
         imgemail = findViewById(R.id.ic_email);
 
-//        SmsManager smsManager = SmsManager.getDefault();
-//        smsManager.sendTextMessage("", null, "< message body>", null, null);
-
+        //CALL
         imgphone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Call_Phone
                 Intent intent = new Intent(Intent.ACTION_DIAL);
                 intent.setData(Uri.parse("tel: 6478650000"));
                 startActivity(intent);
@@ -39,38 +36,34 @@ public class ContactUsActivity extends AppCompatActivity {
             }
         });
 
-//        imgsms.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent sendIntent = new Intent(Intent.ACTION_VIEW);
-//                sendIntent.putExtra("sms_body", "");
-//                        sendIntent.setType("vnd.android-dir/mms-sms");
-//                startActivity(sendIntent);
-//            }
-//        });
+        //SEND TEXT MESSAGE
+        imgsms.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+                Intent smsIntent = new Intent(Intent.ACTION_SENDTO,
+                        Uri.parse("sms:6478650000"));
+                smsIntent.putExtra("sms_body", "Need Information.");
+                startActivity(smsIntent);
+            }
+        });
 
-//        imgemail.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                String to = toEmail.getText().toString();
-//                String subject = emailSubject.getText().toString();
-//                String message = emailBody.getText().toString();
-//                Intent email = new Intent(Intent.ACTION_SEND);
-//                email.putExtra(Intent.EXTRA_EMAIL, new String[] { to });
-//                email.putExtra(Intent.EXTRA_SUBJECT, subject);
-//                email.putExtra(Intent.EXTRA_TEXT, message);
-//                // need this to prompts email client only
-//                email.setType("message/rfc822");
-//                startActivity(Intent.createChooser(email, "Choose an Email client"));
-//
-//            }
-//        });
-
-
-
-
+        //Email
+        imgemail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String to = "";
+                String subject = "";
+                String message = "";
+                Intent email = new Intent(Intent.ACTION_SEND);
+                email.putExtra(Intent.EXTRA_EMAIL, new String[] { to });
+                email.putExtra(Intent.EXTRA_SUBJECT, subject);
+                email.putExtra(Intent.EXTRA_TEXT, message);
+                // need this to prompts email client only
+                email.setType("message/rfc822");
+                startActivity(Intent.createChooser(email, "Choose an Email client"));
+            }
+        });
     }
-
 
 }
