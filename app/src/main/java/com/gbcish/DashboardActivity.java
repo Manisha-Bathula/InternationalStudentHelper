@@ -4,13 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.ViewDebug;
 import android.widget.TextView;
-
-import com.example.internationalstudenthelper.R;
-import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.type.PostalAddress;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,6 +17,10 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+
+import com.example.internationalstudenthelper.R;
+import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class DashboardActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
 {
@@ -114,6 +112,11 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
             case  R.id.nav_manage:
                 Intent intent1=new Intent(DashboardActivity.this,ManageActivity.class);
                 startActivity(intent1);
+                finish();
+                break;
+            case R.id.nav_contactus:
+                Intent intent2 = new Intent(DashboardActivity.this, ContactUsActivity.class);
+                startActivity(intent2);
                 finish();
 
         }

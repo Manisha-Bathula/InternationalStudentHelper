@@ -1,8 +1,5 @@
 package com.gbcish;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -15,6 +12,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.internationalstudenthelper.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -165,16 +164,17 @@ public class RegisterActivity extends AppCompatActivity {
                                                 AlertDialog alertDialog = new AlertDialog.Builder(RegisterActivity.this).create();
                                                 alertDialog.setTitle("Success");
                                                 alertDialog.setMessage("User is created");
-                                                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                                                alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK",
                                                         new DialogInterface.OnClickListener() {
                                                             public void onClick(DialogInterface dialog, int which) {
-                                                                dialog.dismiss();
+                                                                //dialog.dismiss();
+                                                                startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
                                                             }
                                                         });
                                                 alertDialog.show();
 
                                                 //Toast.makeText(RegisterActivity.this, "User Created", Toast.LENGTH_SHORT).show();
-                                                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                                                //startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
                                             } else {
                                                 AlertDialog alertDialog = new AlertDialog.Builder(RegisterActivity.this).create();
                                                 alertDialog.setTitle("Error!");
@@ -223,8 +223,8 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
                         Log.i("jeni","Documents Added with ID:"+documentReference.getId());
-                        Toast.makeText(RegisterActivity.this, "Registered", Toast.LENGTH_SHORT).show();
-                        Intent intent=new Intent(RegisterActivity.this,LoginActivity.class);
+                        //Toast.makeText(RegisterActivity.this, "Registered", Toast.LENGTH_SHORT).show();
+                        Intent intent=new Intent(RegisterActivity.this,DashboardActivity.class);
                         startActivity(intent);
                         finish();
                     }

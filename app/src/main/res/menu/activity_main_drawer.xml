@@ -19,7 +19,7 @@
             android:id="@+id/nav_manage"
             android:title="Manage"/>
         <item
-            android:id="@+id/mav_contact"
+            android:id="@+id/nav_contactus"
             android:icon="@drawable/ic_baseline_contact_phone_24"
             android:title="Contact Us"/>
     </group>
