@@ -20,6 +20,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.internationalstudenthelper.R;
+import com.gbcish.Fragments.NewsFragment;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -49,9 +50,15 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         NavigationUI.setupWithNavController(navigationView, navController);
         navigationView.setNavigationItemSelectedListener(this);
 
+
     }
 
+    @Override
+    protected void onResume() {
+        loadFragment(new NewsFragment());
+        super.onResume();
 
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -125,13 +132,18 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
         }
                            //replacing the fragment 
-            if (fragment != null) {
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.nav_host_fragment, fragment);
-            ft.commit();
-             }
+           loadFragment(fragment);
             DrawerLayout drawer=(DrawerLayout)findViewById(R.id.drawer_layout);
             drawer.closeDrawer(GravityCompat.START);
+        }
+
+
+        private void loadFragment(Fragment fragment){
+            if (fragment != null) {
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.nav_host_fragment, fragment);
+                ft.commit();
+            }
         }
     }
 
