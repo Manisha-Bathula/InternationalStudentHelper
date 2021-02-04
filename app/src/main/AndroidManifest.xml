@@ -21,7 +21,8 @@
         android:roundIcon="@drawable/applogo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.gbcish.ContactUsActivity"></activity>
+        <activity android:name="com.gbcish.ContactUsActivity"
+            android:parentActivityName="com.gbcish.DashboardActivity"></activity>
         <activity android:name="com.gbcish.PostActivity"></activity>
         <activity android:name="com.gbcish.ExploreActivity" />
         <activity android:name="com.gbcish.ManageActivity" />

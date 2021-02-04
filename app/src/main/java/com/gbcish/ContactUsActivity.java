@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.internationalstudenthelper.R;
@@ -15,17 +16,22 @@ public class ContactUsActivity extends AppCompatActivity {
     ImageButton imgphone;
     ImageButton imgsms;
     ImageButton imgemail;
+    ActionBar actionBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact_us);
 
+        //Action Bar
+        getSupportActionBar().setTitle("Contact Us");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         imgphone = findViewById(R.id.img_call);
         imgsms = findViewById(R.id.ic_sms);
         imgemail = findViewById(R.id.ic_email);
 
-        //CALL
+    //CALL
         imgphone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
