@@ -1,4 +1,4 @@
-package com.gbcish.Adapters;
+package com.gbcish.adapters;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -22,12 +22,12 @@ import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.Target;
 import com.example.internationalstudenthelper.R;
-import com.gbcish.CommonFunctions.Utils;
+import com.gbcish.utils.Utils;
 import com.gbcish.models.Article;
 
 import java.util.List;
 
-public class NewsAdapter extends RecyclerView.Adapter<com.gbcish.Adapters.NewsAdapter.MyViewHolder>{
+public class NewsAdapter extends RecyclerView.Adapter<com.gbcish.adapters.NewsAdapter.MyViewHolder>{
 
     private List<Article> articles;
     private Context context;

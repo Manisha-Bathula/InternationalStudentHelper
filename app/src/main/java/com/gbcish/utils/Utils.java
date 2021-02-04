@@ -1,4 +1,4 @@
-package com.gbcish.CommonFunctions;
+package com.gbcish.utils;
 
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;

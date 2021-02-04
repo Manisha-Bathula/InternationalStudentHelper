@@ -7,7 +7,7 @@
     android:padding="16dp"
     android:gravity="center"
     android:background="@color/BackgroundColor"
-    tools:context="com.gbcish.SplashActivity">
+    tools:context="com.gbcish.ui.activities.SplashActivity">
 
     <TextView
         android:layout_width="match_parent"

@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:padding="10dp"
     android:background="@color/BackgroundColor"
-    tools:context="com.gbcish.LoginActivity">
+    tools:context="com.gbcish.ui.activities.LoginActivity">
 
     <ImageView
         android:layout_width="150dp"

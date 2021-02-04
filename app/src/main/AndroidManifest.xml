@@ -21,26 +21,26 @@
         android:roundIcon="@drawable/applogo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.gbcish.ContactUsActivity"
-            android:parentActivityName="com.gbcish.DashboardActivity"></activity>
-        <activity android:name="com.gbcish.PostActivity"></activity>
-        <activity android:name="com.gbcish.ExploreActivity" />
-        <activity android:name="com.gbcish.ManageActivity" />
+        <activity android:name="com.gbcish.ui.activities.ContactUsActivity"
+            android:parentActivityName="com.gbcish.ui.activities.DashboardActivity"></activity>
+        <activity android:name="com.gbcish.ui.activities.PostActivity"></activity>
+        <activity android:name="com.gbcish.ui.activities.ExploreActivity" />
+        <activity android:name="com.gbcish.ui.activities.ManageActivity" />
         <activity
-            android:name="com.gbcish.ProfileActivity"
+            android:name="com.gbcish.ui.activities.ProfileActivity"
             android:theme="@style/NoTheme" />
         <activity
-            android:name="com.gbcish.DashboardActivity"
+            android:name="com.gbcish.ui.activities.DashboardActivity"
             android:label="@string/title_activity_dashboard"
             android:theme="@style/AppTheme.NoActionBar" />
         <!--
                Set to true if your app is Standalone, that is, it does not require the handheld
                app to run.
         -->
-        <activity android:name="com.gbcish.RegisterActivity" />
-        <activity android:name="com.gbcish.LoginActivity" />
+        <activity android:name="com.gbcish.ui.activities.RegisterActivity" />
+        <activity android:name="com.gbcish.ui.activities.LoginActivity" />
         <activity
-            android:name="com.gbcish.SplashActivity"
+            android:name="com.gbcish.ui.activities.SplashActivity"
             android:theme="@style/NoTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,4 +1,4 @@
-package com.gbcish.Fragments;
+package com.gbcish.ui.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,8 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.internationalstudenthelper.R;
-import com.gbcish.Adapters.NewsAdapter;
-import com.gbcish.CommonFunctions.Utils;
+import com.gbcish.adapters.NewsAdapter;
+import com.gbcish.utils.Utils;
 import com.gbcish.api.ApiClient;
 import com.gbcish.api.ApiInterface;
 import com.gbcish.models.Article;

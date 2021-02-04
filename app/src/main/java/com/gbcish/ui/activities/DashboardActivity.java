@@ -1,4 +1,4 @@
-package com.gbcish;
+package com.gbcish.ui.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,7 +20,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.internationalstudenthelper.R;
-import com.gbcish.Fragments.NewsFragment;
+import com.gbcish.ui.fragments.NewsFragment;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 

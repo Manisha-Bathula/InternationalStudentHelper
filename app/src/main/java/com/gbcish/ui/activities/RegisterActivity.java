@@ -1,4 +1,4 @@
-package com.gbcish;
+package com.gbcish.ui.activities;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;

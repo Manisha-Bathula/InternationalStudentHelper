@@ -1,4 +1,4 @@
-package com.gbcish;
+package com.gbcish.ui.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
