@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center"
+    android:background="@color/BackgroundColor"
+    tools:context="com.gbcish.ui.activities.SplashActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_title"
+        android:text="International Student Helper Guide Application "
+        android:gravity="center"
+        android:freezesText="true"
+        android:singleLine="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:scrollHorizontally="true"
+        android:textSize="22sp"
+        android:textColor="#fff"/>
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:id="@+id/splash_img"
+        android:src="@drawable/applogo"/>
+</LinearLayout>

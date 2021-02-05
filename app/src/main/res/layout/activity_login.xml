@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:background="@color/BackgroundColor"
+    tools:context="com.gbcish.ui.activities.LoginActivity">
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:id="@+id/splash_img"
+        android:layout_gravity="center"
+        android:src="@drawable/applogo" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/aclonica"
+        android:gravity="center"
+        android:text="Login"
+        android:textStyle="bold"
+        android:textColor="@color/TextWhite"
+        android:textSize="35sp" />
+
+    <EditText
+        android:id="@+id/et_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="#000000"
+        android:hint="Email Id"
+        android:padding="10dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textSize="13sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/et_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="#000000"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:padding="10dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textSize="13sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/bt_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="#9973DF"
+        android:text="Sign In"
+        android:textColor="#FFFFFF" />
+
+    <com.google.android.gms.common.SignInButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bt_google_sigin"
+        android:layout_marginTop="6dp"></com.google.android.gms.common.SignInButton>
+
+    <TextView
+        android:id="@+id/tv_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="Not an Existing User? Register"
+        android:textColor="@color/TextWhite" />
+
+
+</LinearLayout>

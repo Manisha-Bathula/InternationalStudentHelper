@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/BackgroundColor"
+    tools:context="com.gbcish.ui.activities.ContactUsActivity" >
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/aclonica"
+        android:gravity="center"
+        android:text="Call Us"
+        android:textAllCaps="true"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textSize="18sp" />
+
+    <ImageButton
+        android:id="@+id/img_call"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="#FFFFFF"
+        android:layout_marginBottom="25dp"
+        android:src="@drawable/phone" />
+
+    <TextView
+        android:id="@+id/textViewone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/aclonica"
+        android:gravity="center"
+        android:text="Email Us"
+        android:textAllCaps="true"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textSize="18sp" />
+    
+
+    <ImageButton
+        android:id="@+id/ic_email"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="#FFFFFF"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/gmail" />
+
+    <TextView
+        android:id="@+id/textViewtwo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/aclonica"
+        android:gravity="center"
+        android:text="TEXT Us"
+        android:textAllCaps="true"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textSize="18sp" />
+
+    <ImageButton
+        android:id="@+id/ic_sms"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="#FFFFFF"
+        android:src="@drawable/sms" />
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="80dp"
+        android:src="@drawable/applogo"
+        android:layout_gravity="end"/>
+
+
+</LinearLayout>
