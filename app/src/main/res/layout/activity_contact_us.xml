@@ -12,8 +12,7 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:fontFamily="@font/aclonica"
+        android:layout_marginTop="40dp"
         android:gravity="center"
         android:text="Call Us"
         android:textAllCaps="true"
@@ -22,34 +21,33 @@
 
     <ImageButton
         android:id="@+id/img_call"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:background="#FFFFFF"
+        android:layout_marginTop="10dp"
+        android:background="@color/BackgroundColor"
         android:layout_marginBottom="25dp"
-        android:src="@drawable/phone" />
+        android:src="@drawable/ic_phonecall" />
 
     <TextView
         android:id="@+id/textViewone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:fontFamily="@font/aclonica"
+        android:layout_marginTop="10dp"
         android:gravity="center"
         android:text="Email Us"
         android:textAllCaps="true"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textSize="18sp" />
-    
+
 
     <ImageButton
         android:id="@+id/ic_email"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:background="#FFFFFF"
+        android:layout_marginTop="10dp"
+        android:background="@color/BackgroundColor"
         android:layout_marginBottom="20dp"
         android:src="@drawable/gmail" />
 
@@ -57,8 +55,7 @@
         android:id="@+id/textViewtwo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:fontFamily="@font/aclonica"
+        android:layout_marginTop="20dp"
         android:gravity="center"
         android:text="TEXT Us"
         android:textAllCaps="true"
@@ -70,14 +67,14 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:background="#FFFFFF"
+        android:layout_marginTop="10dp"
+        android:background="@color/BackgroundColor"
         android:src="@drawable/sms" />
 
     <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="60dp"
         android:src="@drawable/applogo"
         android:layout_gravity="end"/>
 
