@@ -12,8 +12,6 @@
     <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
-
-
     <application
         android:allowBackup="true"
         android:icon="@drawable/applogo"
@@ -21,9 +19,11 @@
         android:roundIcon="@drawable/applogo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.gbcish.ContactUsActivity"
-            android:parentActivityName="com.gbcish.DashboardActivity"></activity>
-        <activity android:name="com.gbcish.PostActivity"></activity>
+        <activity android:name="com.gbcish.models.RentalActivity"></activity>
+        <activity
+            android:name="com.gbcish.ContactUsActivity"
+            android:parentActivityName="com.gbcish.DashboardActivity" />
+        <activity android:name="com.gbcish.PostActivity" />
         <activity android:name="com.gbcish.ExploreActivity" />
         <activity android:name="com.gbcish.ManageActivity" />
         <activity

@@ -113,22 +113,28 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
             case R.id.nav_explore:
                 Intent i=new Intent(DashboardActivity.this,ExploreActivity.class);
                 startActivity(i);
-                finish();
+                // do not finish home page. otherwise you can not go back to home page.
+                //finish();
+                break;
 
             case R.id.nav_post:
                 Intent intent=new Intent(DashboardActivity.this, PostActivity.class);
                 startActivity(intent);
-                finish();
+                // do not finish home page. otherwise you can not go back to home page.
+                //finish();
                 break;
             case  R.id.nav_manage:
                 Intent intent1=new Intent(DashboardActivity.this,ManageActivity.class);
                 startActivity(intent1);
-                finish();
+                // do not finish home page. otherwise you can not go back to home page.
+                //finish();
                 break;
             case R.id.nav_contactus:
                 Intent intent2 = new Intent(DashboardActivity.this, ContactUsActivity.class);
                 startActivity(intent2);
-                finish();
+                // do not finish home page. otherwise you can not go back to home page.
+                //finish();
+                break;
 
         }
                            //replacing the fragment 
