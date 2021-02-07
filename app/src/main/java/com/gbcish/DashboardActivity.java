@@ -82,10 +82,10 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
             int id = item.getItemId();
             switch (id){
-                case R.id.action_Prf:
-                    Intent intent = new Intent(getApplicationContext(),ProfileActivity.class);
-                    startActivity(intent);
-                    break;
+            //case R.id.action_Prf:
+                   // Intent intent = new Intent(getApplicationContext(),ProfileActivity.class);
+                    //startActivity(intent);
+                    //break;
                     case R.id.action_Lgt:
                         mAuth.signOut();
                         Intent i = new Intent(getApplicationContext(),LoginActivity.class);
@@ -135,6 +135,14 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                 // do not finish home page. otherwise you can not go back to home page.
                 //finish();
                 break;
+
+            case R.id.nav_profile:
+                Intent intent3 = new Intent(DashboardActivity.this, ProfileActivity.class);
+                startActivity(intent3);
+                // do not finish home page. otherwise you can not go back to home page.
+                //finish();
+                break;
+
 
         }
                            //replacing the fragment 

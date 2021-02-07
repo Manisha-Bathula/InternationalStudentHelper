@@ -24,5 +24,15 @@
         android:name="com.gbcish.ManageActivity"
         android:label="Manage"
         tools:layout="@layout/activity_manage"/>
+    <activity
+        android:id="@+id/nav_contactus"
+        android:name="com.gbcish.ContactUsActivity"
+        android:label="Contact Us"
+        tools:layout="@layout/activity_contact_us"/>
+    <activity
+        android:id="@+id/nav_profile"
+        android:name="com.gbcish.ProfileActivity"
+        android:label="Profile"
+        tools:layout="@layout/activity_profile"/>
 
 </navigation>

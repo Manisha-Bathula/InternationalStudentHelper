@@ -1,5 +1,7 @@
 package com.gbcish;
 
+import android.app.ActionBar;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -11,7 +13,9 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -70,6 +74,7 @@ public class ProfileActivity extends AppCompatActivity {
     private Uri filePath;
     String propic = "";
     String d_id = "", passwords = "", emails = "", names = "", phones = "";
+    Dialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -254,7 +259,20 @@ public class ProfileActivity extends AppCompatActivity {
                             if (!email.equals(emails) || !pass.equals(passwords)) {
                                 AuthCredential credential = EmailAuthProvider
                                         .getCredential(emails, passwords);
-
+                                if (pass.length()<6){
+                                    edtPassword.setError("Password must be 6 Characters");
+                                    AlertDialog alertDialog = new AlertDialog.Builder(ProfileActivity.this).create();
+                                    alertDialog.setTitle("Error!");
+                                    alertDialog.setMessage("Password must be 6 Characters");
+                                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                                            new DialogInterface.OnClickListener() {
+                                                public void onClick(DialogInterface dialog, int which) {
+                                                    dialog.dismiss();
+                                                }
+                                            });
+                                    alertDialog.show();
+                                    return;
+                                }
 // Prompt the user to re-provide their sign-in credentials
                                 user.reauthenticate(credential)
                                         .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -547,6 +565,26 @@ public class ProfileActivity extends AppCompatActivity {
     private void showAlert(String title,String Message) {
         Button btOK;
         TextView tv;
+        dialog = new Dialog(ProfileActivity.this);
+        // dialog.getWindow().getAttributes().windowAnimations= R.style.DailogAnimation;
+        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        Window window=dialog.getWindow();
+        window.setGravity(Gravity.CENTER);
+        dialog.setContentView(R.layout.custom_main_dialog);
+
+        btOK=dialog.findViewById(R.id.btBack);
+        tv=dialog.findViewById(R.id.textddMessage);
+        tv.setText(Message);
+        btOK.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.setCancelable(true);
+        window.setLayout(ActionBar.LayoutParams.WRAP_CONTENT,ActionBar.LayoutParams.WRAP_CONTENT);
+        dialog.show();
 
     }
 }

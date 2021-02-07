@@ -9,7 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.internationalstudenthelper.R;
-import com.gbcish.models.RentalActivity;
+
 
 public class PostActivity extends AppCompatActivity {
 

@@ -19,7 +19,11 @@
         android:roundIcon="@drawable/applogo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.gbcish.models.RentalActivity"></activity>
+        <activity android:name="com.gbcish.RentalActivity"
+            android:theme="@style/NoTheme">
+
+        </activity>
+
         <activity
             android:name="com.gbcish.ContactUsActivity"
             android:parentActivityName="com.gbcish.DashboardActivity" />

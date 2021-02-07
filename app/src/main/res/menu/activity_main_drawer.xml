@@ -22,5 +22,9 @@
             android:id="@+id/nav_contactus"
             android:icon="@drawable/ic_baseline_contact_phone_24"
             android:title="Contact Us"/>
+        <item
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/ic_outline_account_circle_24"
+            android:title="Profile"/>
     </group>
 </menu>
