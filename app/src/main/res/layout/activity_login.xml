@@ -68,7 +68,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/bt_google_sigin"
-        android:layout_marginTop="6dp"></com.google.android.gms.common.SignInButton>
+        android:layout_marginTop="6dp">
+    </com.google.android.gms.common.SignInButton>
 
     <TextView
         android:id="@+id/tv_register"

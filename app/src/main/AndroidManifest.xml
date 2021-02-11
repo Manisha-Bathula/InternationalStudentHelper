@@ -28,7 +28,8 @@
             android:name="com.gbcish.ContactUsActivity"
             android:parentActivityName="com.gbcish.DashboardActivity" />
         <activity android:name="com.gbcish.PostActivity" />
-        <activity android:name="com.gbcish.ExploreActivity" />
+        <activity android:name="com.gbcish.ExploreActivity"
+            android:exported="true"/>
         <activity android:name="com.gbcish.ManageActivity" />
         <activity
             android:name="com.gbcish.ProfileActivity"
