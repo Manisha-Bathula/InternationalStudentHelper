@@ -44,7 +44,7 @@ import java.util.Locale;
 
 public class RentalActivity extends AppCompatActivity {
 
-    EditText postTitle, postDescription, postPrice, postLocation;
+    EditText postTitle, postDescription, postPrice, postLocation,edt_street,edt_province,edt_postal;
     //CardView addImage;
     Spinner categorySpinner;
     TextView imageErrorMsg, CatErrorMsg;
@@ -62,6 +62,7 @@ public class RentalActivity extends AppCompatActivity {
     private ArrayList<MediaFile> mediaFiles;
     private ArrayList<String> imageArray;
     private ArrayList<PostImages> array;
+    String pattern = "A-Z";
 
     private Boolean imageEmpty = true;
 
@@ -73,6 +74,9 @@ public class RentalActivity extends AppCompatActivity {
         postDescription = findViewById(R.id.w_r_u_selling);
         postPrice = findViewById(R.id.price);
         postLocation = findViewById(R.id.add_location);
+        edt_street=findViewById(R.id.edt_street);
+        edt_province=findViewById(R.id.edt_province);
+        edt_postal=findViewById(R.id.edt_post_code);
         //addImage = findViewById(R.id.add_image);
         categorySpinner = findViewById(R.id.catagory);
         // submitPost = findViewById(R.id.submit_post);
@@ -140,15 +144,27 @@ public class RentalActivity extends AppCompatActivity {
             postDescription.setError("Please enter description");
             postDescription.requestFocus();
         } else if (postPrice.getText().toString().isEmpty()) {
-            postPrice.setError("Please enter price");
+            postPrice.setError("Please enter rent");
             postPrice.requestFocus();
         } else if (postLocation.getText().toString().isEmpty()) {
-            postLocation.setError("Please enter location");
+            postLocation.setError("Please enter city");
             postLocation.requestFocus();
-        } else if (imageEmpty) {
+        }else if (edt_street.getText().toString().isEmpty()){
+            edt_street.setError("Please enter street name");
+            edt_street.requestFocus();
+        }else if (edt_province.getText().toString().isEmpty()){
+            edt_province.setError("Please enter provinance name");
+            edt_province.requestFocus();
+        }else if (edt_postal.getText().toString().isEmpty()){
+            edt_postal.setError("Please enter postal code");
+            edt_postal.requestFocus();
+        }else if (edt_postal.getText().toString().matches(pattern)){
+            edt_postal.setError("Postal Code must be in capital letters");
+            edt_postal.requestFocus();
+        }else if (imageEmpty) {
             Toast.makeText(this, "Please upload a image", Toast.LENGTH_SHORT).show();
             // imageErrorMsg.setVisibility(view.VISIBLE);
-        } else {
+        }else {
             // imageErrorMsg.setVisibility(view.INVISIBLE);
             uploadImage();
         }
@@ -182,12 +198,15 @@ public class RentalActivity extends AppCompatActivity {
         PostModel user_posts = new PostModel(postTitle.getText().toString(),
                 postCat,
                 postDescription.getText().toString(),
-                postLocation.getText().toString(),
                 postPrice.getText().toString(),
-                array,
+                postLocation.getText().toString(),
+                edt_street.getText().toString(),
+                edt_province.getText().toString(),
+                edt_postal.getText().toString(),
                 key,
                 uploadTime,
-                currentuser
+                currentuser,
+                array
         );
 
         mDatabase.child("AddRentalPosts").child(key).setValue(user_posts).addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -198,6 +217,9 @@ public class RentalActivity extends AppCompatActivity {
                 postDescription.getText().clear();
                 postPrice.getText().clear();
                 postLocation.getText().clear();
+                edt_postal.getText().clear();
+                edt_province.getText().clear();
+                edt_street.getText().clear();
                 postImageLink = null;
                 array.clear();
                 imageEmpty = true;

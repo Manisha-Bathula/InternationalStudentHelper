@@ -25,6 +25,11 @@
         android:label="Manage"
         tools:layout="@layout/activity_manage"/>
     <activity
+        android:id="@+id/nav_currency"
+        android:name="com.gbcish.CurrencyConvertorActivity"
+        android:label="Currency Convertor"
+        tools:layout="@layout/activity_currency_convertor"/>
+    <activity
         android:id="@+id/nav_contactus"
         android:name="com.gbcish.ContactUsActivity"
         android:label="Contact Us"

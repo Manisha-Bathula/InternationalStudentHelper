@@ -4,6 +4,38 @@ package com.gbcish.models;
 import java.util.ArrayList;
 
 public class PostModel {
+
+
+    public String post_title;
+    public String post_category;
+    public String post_description;
+    public String post_rent;
+    public String post_city;
+    public String post_street;
+    public String post_province;
+    public String post_postal_code;
+    public String post_pushkey;
+    public String upload_time;
+    public String user_id;
+    public ArrayList<PostImages> imageUrl = null;
+    PostModel(){};
+
+
+    public PostModel(String post_title, String post_category, String post_description, String post_rent, String post_city, String post_street, String post_province, String post_postal_code, String post_pushkey, String upload_time, String user_id, ArrayList<PostImages> imageUrl) {
+        this.post_title = post_title;
+        this.post_category = post_category;
+        this.post_description = post_description;
+        this.post_rent = post_rent;
+        this.post_city = post_city;
+        this.post_street = post_street;
+        this.post_province = post_province;
+        this.post_postal_code = post_postal_code;
+        this.post_pushkey = post_pushkey;
+        this.upload_time = upload_time;
+        this.user_id = user_id;
+        this.imageUrl = imageUrl;
+    }
+
     public String getPost_title() {
         return post_title;
     }
@@ -28,20 +60,44 @@ public class PostModel {
         this.post_description = post_description;
     }
 
-    public String getPost_location() {
-        return post_location;
+    public String getPost_rent() {
+        return post_rent;
     }
 
-    public void setPost_location(String post_location) {
-        this.post_location = post_location;
+    public void setPost_rent(String post_rent) {
+        this.post_rent = post_rent;
     }
 
-    public String getPost_price() {
-        return post_price;
+    public String getPost_city() {
+        return post_city;
     }
 
-    public void setPost_price(String post_price) {
-        this.post_price = post_price;
+    public void setPost_city(String post_city) {
+        this.post_city = post_city;
+    }
+
+    public String getPost_street() {
+        return post_street;
+    }
+
+    public void setPost_street(String post_street) {
+        this.post_street = post_street;
+    }
+
+    public String getPost_province() {
+        return post_province;
+    }
+
+    public void setPost_province(String post_province) {
+        this.post_province = post_province;
+    }
+
+    public String getPost_postal_code() {
+        return post_postal_code;
+    }
+
+    public void setPost_postal_code(String post_postal_code) {
+        this.post_postal_code = post_postal_code;
     }
 
     public String getPost_pushkey() {
@@ -75,30 +131,4 @@ public class PostModel {
     public void setImageUrl(ArrayList<PostImages> imageUrl) {
         this.imageUrl = imageUrl;
     }
-
-    public String post_title;
-    public String post_category;
-    public String post_description;
-    public String post_location;
-    public String post_price;
-    public String post_pushkey;
-    public String upload_time;
-    public String user_id;
-    public ArrayList<PostImages> imageUrl = null;
-    PostModel(){};
-      public PostModel(String post_title, String post_category, String post_description, String post_location, String post_price, ArrayList<PostImages> imageUrl,
-                       String post_pushkey, String upload_time, String user_id
-                     ){
-        this.post_title = post_title;
-        this.post_category = post_category;
-        this.post_description = post_description;
-        this.post_location = post_location;
-        this.post_price = post_price;
-        this.imageUrl = imageUrl;
-        this.post_pushkey =post_pushkey;
-        this.upload_time =upload_time;
-        this.user_id = user_id;
-
-    }
-
 }
