@@ -19,17 +19,18 @@
         android:roundIcon="@drawable/applogo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.gbcish.RentalActivity"
-            android:theme="@style/NoTheme">
-
-        </activity>
-
+        <activity android:name="com.gbcish.CurrencyConvertorActivity"
+            android:theme="@style/NoTheme"></activity>
+        <activity
+            android:name="com.gbcish.RentalActivity"
+            android:theme="@style/NoTheme"></activity>
         <activity
             android:name="com.gbcish.ContactUsActivity"
             android:parentActivityName="com.gbcish.DashboardActivity" />
         <activity android:name="com.gbcish.PostActivity" />
-        <activity android:name="com.gbcish.ExploreActivity"
-            android:exported="true"/>
+        <activity
+            android:name="com.gbcish.ExploreActivity"
+            android:exported="true" />
         <activity android:name="com.gbcish.ManageActivity" />
         <activity
             android:name="com.gbcish.ProfileActivity"

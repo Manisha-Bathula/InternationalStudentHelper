@@ -84,8 +84,8 @@ public class ExploreAdapter extends RecyclerView.Adapter<ExploreAdapter.MyViewHo
 
 
         holder.title.setText(model.getPost_title());
-        holder.price.setText(model.getPost_price());
-        holder.location.setText(model.getPost_location());
+        holder.price.setText(model.getPost_rent());
+        holder.location.setText(model.getPost_city());
         holder.category.setText(model.getPost_category());
 
 

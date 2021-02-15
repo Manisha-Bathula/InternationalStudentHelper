@@ -52,7 +52,7 @@ public class ExploreActivity extends AppCompatActivity implements ExploreAdapter
 
                 for (DataSnapshot snap: snapshot.getChildren()){
                     PostModel c = snap.getValue(PostModel.class);
-                    Log.d("Categories: ", c.getPost_location() + " " + c.getPost_description());
+                    Log.d("Categories: ", c.getPost_rent() + " " + c.getPost_description());
                     postModelList.add(c);
                     exploreAdapter.notifyDataSetChanged();
                 }
