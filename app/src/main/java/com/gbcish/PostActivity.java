@@ -29,6 +29,16 @@ public class PostActivity extends AppCompatActivity {
 
         //register card view with its id
         rental_house = findViewById(R.id.rental_house);
+        post_job=findViewById(R.id.search_job);
+
+
+        post_job.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i= new Intent(PostActivity.this, JobSearchActivity.class);
+                startActivity(i);
+            }
+        });
 
 
         //implement onclick

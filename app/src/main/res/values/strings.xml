@@ -32,5 +32,10 @@
     <string name="title_activity_helper_dashboard">HelperDashboardActivity</string>
     <string name="title_activity_new_dashboard">NewDashboardActivity</string>
 
+    <array name="spinner">
+        <item>Part Time</item>
+        <item>Full Time</item>
+    </array>
+
 
 </resources>

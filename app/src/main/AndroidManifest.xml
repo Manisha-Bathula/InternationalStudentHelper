@@ -19,11 +19,13 @@
         android:roundIcon="@drawable/applogo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.gbcish.CurrencyConvertorActivity"
-            android:theme="@style/NoTheme"></activity>
+        <activity android:name="com.gbcish.JobSearchActivity"></activity>
+        <activity
+            android:name="com.gbcish.CurrencyConvertorActivity"
+            android:theme="@style/NoTheme" />
         <activity
             android:name="com.gbcish.RentalActivity"
-            android:theme="@style/NoTheme"></activity>
+            android:theme="@style/NoTheme" />
         <activity
             android:name="com.gbcish.ContactUsActivity"
             android:parentActivityName="com.gbcish.DashboardActivity" />
