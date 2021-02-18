@@ -3,6 +3,9 @@
     package="com.example.internationalstudenthelper">
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <uses-feature android:name="android.hardware.type.watch" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.SEND_SMS" />
@@ -19,7 +22,26 @@
         android:roundIcon="@drawable/applogo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.gbcish.JobSearchActivity"></activity>
+        <activity android:name="com.gbcish.ExploreDetailsActivity"></activity>
+
+        <uses-library
+            android:name="com.google.android.wearable"
+            android:required="false" />
+        <!--
+               Set to true if your app is Standalone, that is, it does not require the handheld
+               app to run.
+        -->
+        <meta-data
+            android:name="com.google.android.wearable.standalone"
+            android:value="true" />
+
+        <activity
+            android:name="com.gbcish.newsDetailScreenActivity"
+            android:label="@string/title_activity_news_detail_screen" />
+        <activity
+            android:name="com.gbcish.ExploreDetailMainActivity"
+            android:label="@string/title_activity_explore_detail_main" />
+        <activity android:name="com.gbcish.JobSearchActivity" />
         <activity
             android:name="com.gbcish.CurrencyConvertorActivity"
             android:theme="@style/NoTheme" />

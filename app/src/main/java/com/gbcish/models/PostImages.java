@@ -1,6 +1,8 @@
 package com.gbcish.models;
 
-public class PostImages {
+import java.io.Serializable;
+
+public class PostImages implements Serializable {
 
     public String imageUrl = null;
     public PostImages(){};

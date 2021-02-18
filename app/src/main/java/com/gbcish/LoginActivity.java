@@ -38,7 +38,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextView tv_register;
     private Button bt_login;
     private EditText et_email, et_password;
-    private SignInButton bt_google_sigin;
+    private Button bt_google_sigin;
     private FirebaseFirestore db;
 
     private FirebaseAuth mAuth;

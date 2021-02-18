@@ -36,6 +36,8 @@
         <item>Part Time</item>
         <item>Full Time</item>
     </array>
+    <string name="title_activity_explore_detail_main">ExploreDetailMainActivity</string>
+    <string name="title_activity_news_detail_screen">newsDetailScreenActivity</string>
 
 
 </resources>

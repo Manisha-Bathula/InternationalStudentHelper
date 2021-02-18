@@ -64,12 +64,17 @@
         android:text="Sign In"
         android:textColor="#FFFFFF" />
 
-    <com.google.android.gms.common.SignInButton
+    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/bt_google_sigin"
-        android:layout_marginTop="6dp">
-    </com.google.android.gms.common.SignInButton>
+        android:text="Sign up using Google"
+        android:layout_marginTop="6dp"
+        android:background="#9973DF"
+        android:drawable="@drawable/google"
+        android:textColor="#FFFFFF"/>
+
+    /
 
     <TextView
         android:id="@+id/tv_register"

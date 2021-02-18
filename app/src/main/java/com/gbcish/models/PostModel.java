@@ -1,9 +1,10 @@
 package com.gbcish.models;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class PostModel {
+public class PostModel implements Serializable {
 
 
     public String post_title;

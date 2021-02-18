@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -49,7 +50,7 @@ public class ExploreAdapter extends RecyclerView.Adapter<ExploreAdapter.MyViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final MyViewHolder holder, final int position) {
         final PostModel model = postModelList.get(position);
         RequestOptions requestOptions = new RequestOptions();
         requestOptions.placeholder(Utils.getRandomDrawbleColor());
@@ -87,6 +88,12 @@ public class ExploreAdapter extends RecyclerView.Adapter<ExploreAdapter.MyViewHo
         holder.price.setText(model.getPost_rent());
         holder.location.setText(model.getPost_city());
         holder.category.setText(model.getPost_category());
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onItemClickListener.onItemClick(position,model);
+            }
+        });
 
 
     }
@@ -100,7 +107,7 @@ public class ExploreAdapter extends RecyclerView.Adapter<ExploreAdapter.MyViewHo
         this.onItemClickListener = onItemClickListener;
     }
     public interface OnItemClickListener {
-        void onItemClick(View view, int position, PostModel postModel);
+        void onItemClick(int position, PostModel postModel);
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -108,6 +115,7 @@ public class ExploreAdapter extends RecyclerView.Adapter<ExploreAdapter.MyViewHo
         TextView title, price, category, location;
         ImageView imageView;
         ProgressBar progressBar;
+        CardView cardView;
 
 
         public MyViewHolder(@NonNull View itemView) {
@@ -118,6 +126,7 @@ public class ExploreAdapter extends RecyclerView.Adapter<ExploreAdapter.MyViewHo
             price = itemView.findViewById(R.id.tv_price);
             category = itemView.findViewById(R.id.tv_category);
             imageView = itemView.findViewById(R.id.imageView);
+            cardView=itemView.findViewById(R.id.cardView);
 
 //            progressBar = itemView.findViewById(R.id.prograss_load_photo);
 

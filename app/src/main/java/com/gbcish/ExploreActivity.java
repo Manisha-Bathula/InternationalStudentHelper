@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -68,7 +69,12 @@ public class ExploreActivity extends AppCompatActivity implements ExploreAdapter
     }
 
     @Override
-    public void onItemClick(View view, int position, PostModel postModel) {
+    public void onItemClick( int position, PostModel postModel) {
+
+        Intent it=new Intent(getApplicationContext(),ExploreDetailsActivity.class);
+        it.putExtra("PostModel",postModel);
+        startActivity(it);
+
 
     }
 }
