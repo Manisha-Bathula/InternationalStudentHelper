@@ -5,16 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-
+    android:background="@color/BackgroundColor"
     tools:context="com.gbcish.ExploreDetailsActivity">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginBottom="30dp"
-        android:layout_marginTop="30dp"
+        android:layout_height="match_parent"
+       android:layout_margin="16dp"
         app:cardCornerRadius="10dp"
         app:cardElevation="0dp"
         android:layout_below="@id/header"
@@ -22,7 +19,7 @@
         android:id="@+id/cardViewMain">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
                 <LinearLayout
@@ -79,28 +76,25 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
+                    android:layout_weight="1"
                     android:text="Category"
                     android:textColor="#333"
                     android:textSize="18sp"
                     android:layout_gravity="center_vertical"
                     android:paddingLeft="15dp"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_weight="1">
+
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/tv_category1"
                         android:gravity="left"
+                        android:layout_weight="1"
                         android:layout_gravity="center_vertical"
                         android:textColor="#333"
                         android:textSize="18sp"
                         android:padding="10dp"
                         android:inputType="textEmailAddress"
                         android:background="#fff" />
-                </LinearLayout>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -109,29 +103,25 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
+                    android:layout_weight="1"
                     android:text="Rent"
                     android:textColor="#333"
                     android:textSize="18sp"
                     android:layout_gravity="center_vertical"
                     android:paddingLeft="15dp"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_weight="1">
-                    <EditText
+
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/tv_rent"
                         android:gravity="left"
+                        android:layout_weight="1"
                         android:layout_gravity="center_vertical"
                         android:textColor="#333"
                         android:textSize="18sp"
                         android:padding="10dp"
-                        android:inputType="phone"
                         android:background="#fff"
-                        android:hint="Phone"/>
-                </LinearLayout>
+                        />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -143,26 +133,55 @@
                     android:text="Description"
                     android:textColor="#333"
                     android:textSize="16sp"
-                    android:layout_marginTop="10dp"/>
+                    android:layout_marginTop="8dp"
+                    android:paddingLeft="15dp"/>
                 <TextView
                     android:id="@+id/tv_description1"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:textColor="#9E333333"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="16sp"
+                    android:padding="15dp"
+                    android:hint="Add description"
+                    android:inputType="textMultiLine"
+                    android:singleLine="false"
+                   />
+                </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Address"
+                    android:textColor="#333"
+                    android:paddingLeft="15dp"
+
+                    android:textSize="16sp"
+                    />
+                <TextView
+                    android:id="@+id/tv_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:gravity="left"
                     android:textColor="#9E333333"
                     android:layout_gravity="center_vertical"
                     android:textSize="18sp"
-                    android:layout_marginTop="10dp"
-                    android:padding="10dp"
-                    android:hint="Add description"
+                    android:layout_marginTop="4dp"
+                    android:paddingLeft="15dp"
                     android:inputType="textMultiLine"
                     android:singleLine="false"
                     android:overScrollMode="always"
                     android:scrollbarStyle="insideInset"
                     android:scrollbars="vertical"
-                   />
-                </LinearLayout>
+                    />
             </LinearLayout>
+            </LinearLayout>
+
 
     </androidx.cardview.widget.CardView>
 

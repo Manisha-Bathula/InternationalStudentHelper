@@ -63,7 +63,7 @@ public class JobSearchActivity extends AppCompatActivity {
     private ArrayList<String> imageArray;
     private ArrayList<PostImages> array;
     String pattern = "A-Z";
-
+    private String category = "Job";
     private Boolean imageEmpty = true;
 
     @Override
@@ -208,6 +208,7 @@ public class JobSearchActivity extends AppCompatActivity {
                 key,
                 uploadTime,
                 currentuser,
+                category,
                 array
         );
 

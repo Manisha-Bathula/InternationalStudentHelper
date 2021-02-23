@@ -64,6 +64,7 @@ public class RentalActivity extends AppCompatActivity {
     private ArrayList<PostImages> array;
     String pattern = "A-Z";
 
+    private String category = "Rent";
     private Boolean imageEmpty = true;
 
     @Override
@@ -206,6 +207,7 @@ public class RentalActivity extends AppCompatActivity {
                 key,
                 uploadTime,
                 currentuser,
+                category,
                 array
         );
 

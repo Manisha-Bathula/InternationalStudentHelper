@@ -92,6 +92,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Price"
+                    android:id="@+id/tvPriceTitle"
                     android:textStyle="bold"
                     android:textColor="#333"
                     android:textSize="18sp"

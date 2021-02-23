@@ -6,6 +6,8 @@ import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -27,17 +29,21 @@ import com.example.internationalstudenthelper.R;
 import com.gbcish.CommonFunctions.Utils;
 import com.gbcish.models.PostModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class ExploreAdapter extends RecyclerView.Adapter<ExploreAdapter.MyViewHolder> {
+public class ExploreAdapter extends RecyclerView.Adapter<ExploreAdapter.MyViewHolder>  implements Filterable {
 
     private List<PostModel> postModelList;
+    private List<PostModel>  filteredpostModelList;
+
     private Context context;
     private OnItemClickListener onItemClickListener;
 
     public ExploreAdapter(List<PostModel> postModels, Context context) {
         this.postModelList = postModels;
         this.context = context;
+        this.filteredpostModelList=postModels;
     }
 
 
@@ -51,7 +57,7 @@ public class ExploreAdapter extends RecyclerView.Adapter<ExploreAdapter.MyViewHo
 
     @Override
     public void onBindViewHolder(@NonNull final MyViewHolder holder, final int position) {
-        final PostModel model = postModelList.get(position);
+        final PostModel model = filteredpostModelList.get(position);
         RequestOptions requestOptions = new RequestOptions();
         requestOptions.placeholder(Utils.getRandomDrawbleColor());
         requestOptions.error(Utils.getRandomDrawbleColor());
@@ -82,25 +88,66 @@ public class ExploreAdapter extends RecyclerView.Adapter<ExploreAdapter.MyViewHo
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .into(holder.imageView);
 
-
-
-        holder.title.setText(model.getPost_title());
-        holder.price.setText(model.getPost_rent());
-        holder.location.setText(model.getPost_city());
-        holder.category.setText(model.getPost_category());
-        holder.cardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onItemClickListener.onItemClick(position,model);
-            }
-        });
+if (model.getKey()!=null) {
+    if (model.getKey().equalsIgnoreCase("Rent")) {
+        holder.tvPriceTitle.setText("Rent");
+    } else if (model.getKey().equalsIgnoreCase("Sell")) {
+        holder.tvPriceTitle.setText("Price");
+    } else {
+        holder.tvPriceTitle.setText("Salary");
+    }
+}
+    holder.title.setText(model.getPost_title());
+    holder.price.setText(model.getPost_rent() + " " + "CAD");
+    holder.location.setText(model.getPost_city());
+    holder.category.setText(model.getPost_category());
+    holder.cardView.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            onItemClickListener.onItemClick(position, model);
+        }
+    });
 
 
     }
 
     @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                String charString = charSequence.toString();
+                if (charString.isEmpty()) {
+                    filteredpostModelList = postModelList;
+                } else {
+                    List<PostModel> filteredList = new ArrayList<>();
+                    for (PostModel row : postModelList) {
+
+                        // name match condition. this might differ depending on your requirement
+                        // here we are looking for name or phone number match
+                        if (row.getPost_category().toLowerCase().contains(charString.toLowerCase()) || row.getPost_city().contains(charSequence)) {
+                            filteredList.add(row);
+                        }
+                    }
+
+                    filteredpostModelList = filteredList;
+                }
+
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = filteredpostModelList;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                filteredpostModelList = (ArrayList<PostModel>) filterResults.values;
+                notifyDataSetChanged();
+            }
+        };
+    }
+    @Override
     public int getItemCount() {
-        return postModelList.size();
+        return filteredpostModelList.size();
     }
 
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
@@ -112,7 +159,7 @@ public class ExploreAdapter extends RecyclerView.Adapter<ExploreAdapter.MyViewHo
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView title, price, category, location;
+        TextView title, price, category, location,tvPriceTitle;
         ImageView imageView;
         ProgressBar progressBar;
         CardView cardView;
@@ -127,7 +174,7 @@ public class ExploreAdapter extends RecyclerView.Adapter<ExploreAdapter.MyViewHo
             category = itemView.findViewById(R.id.tv_category);
             imageView = itemView.findViewById(R.id.imageView);
             cardView=itemView.findViewById(R.id.cardView);
-
+            tvPriceTitle=itemView.findViewById(R.id.tvPriceTitle);
 //            progressBar = itemView.findViewById(R.id.prograss_load_photo);
 
 

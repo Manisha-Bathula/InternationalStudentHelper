@@ -2,6 +2,7 @@ package com.gbcish;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -23,12 +24,13 @@ import com.gbcish.models.PostModel;
 
 public class ExploreDetailsActivity extends AppCompatActivity {
 
-    private TextView tv_title1, tv_category1, tv_rent, tv_description1;
+    private TextView tv_title1, tv_category1, tv_rent, tv_description1,tv_address;
     private ImageView post_image;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_explore_details);
+
 
         Intent it =getIntent();
         PostModel postModel= (PostModel) it.getSerializableExtra("PostModel");
@@ -39,13 +41,15 @@ public class ExploreDetailsActivity extends AppCompatActivity {
         tv_category1=findViewById(R.id.tv_category1);
         tv_rent=findViewById(R.id.tv_rent);
         tv_description1=findViewById(R.id.tv_description1);
+        tv_address=findViewById(R.id.tv_address);
         post_image=findViewById(R.id.post_image);
 
         tv_title1.setText(postModel.getPost_title());
         tv_category1.setText(postModel.getPost_category());
-        tv_rent.setText(postModel.getPost_rent());
+        tv_rent.setText(postModel.getPost_rent()+" "+"CAD");
         tv_description1.setText(postModel.getPost_description());
 
+        tv_address.setText(postModel.getFullAddress());
         RequestOptions requestOptions = new RequestOptions();
         requestOptions.placeholder(Utils.getRandomDrawbleColor());
         requestOptions.error(Utils.getRandomDrawbleColor());

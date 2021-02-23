@@ -18,11 +18,21 @@ public class PostModel implements Serializable {
     public String post_pushkey;
     public String upload_time;
     public String user_id;
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public  String key;
     public ArrayList<PostImages> imageUrl = null;
     PostModel(){};
 
 
-    public PostModel(String post_title, String post_category, String post_description, String post_rent, String post_city, String post_street, String post_province, String post_postal_code, String post_pushkey, String upload_time, String user_id, ArrayList<PostImages> imageUrl) {
+    public PostModel(String post_title, String post_category, String post_description, String post_rent, String post_city, String post_street, String post_province, String post_postal_code, String post_pushkey, String upload_time, String user_id,String key, ArrayList<PostImages> imageUrl) {
         this.post_title = post_title;
         this.post_category = post_category;
         this.post_description = post_description;
@@ -34,6 +44,7 @@ public class PostModel implements Serializable {
         this.post_pushkey = post_pushkey;
         this.upload_time = upload_time;
         this.user_id = user_id;
+        this.key=key;
         this.imageUrl = imageUrl;
     }
 
@@ -131,5 +142,10 @@ public class PostModel implements Serializable {
 
     public void setImageUrl(ArrayList<PostImages> imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public String getFullAddress(){
+
+        return getPost_street()+","+getPost_city()+","+getPost_province()+","+getPost_postal_code();
     }
 }
