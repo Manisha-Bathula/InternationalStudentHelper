@@ -30,7 +30,16 @@ public class PostActivity extends AppCompatActivity {
         //register card view with its id
         rental_house = findViewById(R.id.rental_house);
         post_job=findViewById(R.id.search_job);
+        buy_laptop = findViewById(R.id.buy_laptop);
 
+
+        buy_laptop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i= new Intent(PostActivity.this, ElectronicsActivity.class);
+                startActivity(i);
+            }
+        });
 
         post_job.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,15 +49,12 @@ public class PostActivity extends AppCompatActivity {
             }
         });
 
-
         //implement onclick
         rental_house.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //to do your code haer. this code will wokr when you click on rental house button
                 Intent intent=new Intent(PostActivity.this, RentalActivity.class);
                 startActivity(intent);
-                //run the projcet and open emulator
             }
         });
     }
