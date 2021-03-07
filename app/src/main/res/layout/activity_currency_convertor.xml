@@ -56,7 +56,7 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="US Dollar (USD)"
+                    android:hint="Enter Amount"
                     android:textSize="16sp"
                     android:padding="10dp"
                     android:textColor="#333"

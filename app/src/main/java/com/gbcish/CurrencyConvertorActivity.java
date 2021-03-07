@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -29,6 +31,7 @@ import com.example.internationalstudenthelper.R;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class CurrencyConvertorActivity extends AppCompatActivity {
@@ -49,6 +52,7 @@ public class CurrencyConvertorActivity extends AppCompatActivity {
 
     ImageView back_btn;
     Dialog dialog;
+    String usd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,10 +109,38 @@ public class CurrencyConvertorActivity extends AppCompatActivity {
         ArrayAdapter<String> toAdapter=new ArrayAdapter<String>(CurrencyConvertorActivity.this,android.R.layout.simple_spinner_dropdown_item,toList);
         toSpinner.setAdapter(toAdapter);
 
+        editText_usd.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                String input = charSequence.toString();
+                if (!input.isEmpty()) {
+                    input = input.replace(",", "");
+                    DecimalFormat format = new DecimalFormat("#,###,###");
+                    String newPrice = format.format(Double.parseDouble(input));
+                    editText_usd.removeTextChangedListener(this);
+                    editText_usd.setText(newPrice);
+                    editText_usd.setSelection(newPrice.length());
+                    editText_usd.addTextChangedListener(this);
+                }
+
+                }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
         button_convert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String usd=editText_usd.getText().toString().trim();
+                usd=editText_usd.getText().toString().trim();
+                usd = usd.replace(",", "");
+
                 if (usd.equals("")){
                     showAlert("Alert !!","Please enter USD");
                     //editText_usd.setError("Please enter USD");
