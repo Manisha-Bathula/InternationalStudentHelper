@@ -39,6 +39,7 @@ import com.jaiselrahman.filepicker.model.MediaFile;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -53,6 +54,7 @@ public class ElectronicsActivity extends AppCompatActivity {
     String postCat = null;
     Uri postImageUri = null;
     String postImageLink = null;
+    String uploadDate;
     String uploadTime;
     private DatabaseReference mDatabase;
     ProgressDialog progressDialog;
@@ -65,6 +67,8 @@ public class ElectronicsActivity extends AppCompatActivity {
     String pattern = "A-Z";
     private String category = "Gadget";
     private Boolean imageEmpty = true;
+
+    Calendar calender = Calendar.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -204,6 +208,7 @@ public class ElectronicsActivity extends AppCompatActivity {
                 edt_street.getText().toString(),
                 edt_province.getText().toString(),
                 edt_postal.getText().toString(),
+                uploadDate,
                 key,
                 uploadTime,
                 currentuser,

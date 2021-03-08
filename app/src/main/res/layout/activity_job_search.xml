@@ -282,6 +282,8 @@
                             android:background="@drawable/edtbg"
                             android:hint="Postal Code"
                             android:inputType="textPostalAddress|textCapSentences" />
+
+
                         <com.github.florent37.shapeofview.shapes.RoundRectView
                             android:layout_width="match_parent"
                             android:layout_height="60dp"

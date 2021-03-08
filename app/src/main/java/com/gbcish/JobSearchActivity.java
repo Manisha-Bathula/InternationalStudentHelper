@@ -38,10 +38,14 @@ import com.jaiselrahman.filepicker.activity.FilePickerActivity;
 import com.jaiselrahman.filepicker.config.Configurations;
 import com.jaiselrahman.filepicker.model.MediaFile;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class JobSearchActivity extends AppCompatActivity {
     EditText postTitle, postDescription, postPrice, postLocation,edt_street,edt_province,edt_postal;
@@ -54,6 +58,8 @@ public class JobSearchActivity extends AppCompatActivity {
     Uri postImageUri = null;
     String postImageLink = null;
     String uploadTime;
+    String uploadDate;
+    String postalCodeJob;
     private DatabaseReference mDatabase;
     ProgressDialog progressDialog;
     FirebaseStorage storage;
@@ -62,9 +68,13 @@ public class JobSearchActivity extends AppCompatActivity {
     private ArrayList<MediaFile> mediaFiles;
     private ArrayList<String> imageArray;
     private ArrayList<PostImages> array;
-    String pattern = "A-Z";
+    String pattern = "^[A-Z]{1,2}[0-9R][0-9A-Z]? [0-9][ABD-HJLNP-UW-Z]{2}$";
     private String category = "Job";
     private Boolean imageEmpty = true;
+
+    Calendar calender = Calendar.getInstance();
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,7 +114,10 @@ public class JobSearchActivity extends AppCompatActivity {
         imageArray = new ArrayList<String>();
         array = new ArrayList<PostImages>();
         // getSupportActionBar().setTitle("Create Post");
+        postalCodeJob = String.valueOf(edt_postal);
         String[] catArray = {"Select Item", "Part-Time",  "Full-Time"};
+        String currentdate = DateFormat.getDateInstance().format(calender.getTime());
+        uploadDate = currentdate;
         String currentTime = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());
         uploadTime = currentTime;
         // setting data to adapter
@@ -135,6 +148,15 @@ public class JobSearchActivity extends AppCompatActivity {
 
     }
 
+    public static boolean valPostalCode(String postcode){
+        String regex = "^[A-Z]{1,2}[0-9R][0-9A-Z]? [0-9][ABD-HJLNP-UW-Z]{2}$";
+        Pattern pc = Pattern.compile(regex);
+        Matcher matcher = pc.matcher(postcode);
+        boolean result = matcher.find();
+        return  result;
+
+    }
+
     public void addPost(View view) {
         if (postTitle.getText().toString().isEmpty()) {
             postTitle.setError("Please enter title");
@@ -160,8 +182,8 @@ public class JobSearchActivity extends AppCompatActivity {
             edt_postal.setError("Please enter postal code");
             //here we can check postal code.
             edt_postal.requestFocus();
-        }else if (edt_postal.getText().toString().matches(pattern)){
-            edt_postal.setError("Postal Code must be in capital letters");
+        }else if (valPostalCode(postalCodeJob)){
+            edt_postal.setError("Enter Valid Postal Code");
             edt_postal.requestFocus();
         }else if (imageEmpty) {
             Toast.makeText(this, "Please upload a image", Toast.LENGTH_SHORT).show();
@@ -205,6 +227,7 @@ public class JobSearchActivity extends AppCompatActivity {
                 edt_street.getText().toString(),
                 edt_province.getText().toString(),
                 edt_postal.getText().toString(),
+                uploadDate,
                 key,
                 uploadTime,
                 currentuser,

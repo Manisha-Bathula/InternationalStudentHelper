@@ -15,6 +15,7 @@ public class PostModel implements Serializable {
     public String post_street;
     public String post_province;
     public String post_postal_code;
+    public String post_current_date;
     public String post_pushkey;
     public String upload_time;
     public String user_id;
@@ -32,7 +33,7 @@ public class PostModel implements Serializable {
     PostModel(){};
 
 
-    public PostModel(String post_title, String post_category, String post_description, String post_rent, String post_city, String post_street, String post_province, String post_postal_code, String post_pushkey, String upload_time, String user_id,String key, ArrayList<PostImages> imageUrl) {
+    public PostModel(String post_title, String post_category, String post_description, String post_rent, String post_city, String post_street, String post_province, String post_postal_code, String post_current_date, String post_pushkey, String upload_time, String user_id,String key, ArrayList<PostImages> imageUrl) {
         this.post_title = post_title;
         this.post_category = post_category;
         this.post_description = post_description;
@@ -41,6 +42,7 @@ public class PostModel implements Serializable {
         this.post_street = post_street;
         this.post_province = post_province;
         this.post_postal_code = post_postal_code;
+        this.post_current_date = post_current_date;
         this.post_pushkey = post_pushkey;
         this.upload_time = upload_time;
         this.user_id = user_id;
@@ -111,6 +113,10 @@ public class PostModel implements Serializable {
     public void setPost_postal_code(String post_postal_code) {
         this.post_postal_code = post_postal_code;
     }
+
+    public void setPost_current_date(String post_current_date){this.post_current_date = post_current_date; }
+
+    public String getPost_current_date() {return  post_current_date; }
 
     public String getPost_pushkey() {
         return post_pushkey;

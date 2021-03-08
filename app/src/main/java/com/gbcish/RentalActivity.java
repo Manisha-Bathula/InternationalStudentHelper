@@ -37,8 +37,10 @@ import com.jaiselrahman.filepicker.activity.FilePickerActivity;
 import com.jaiselrahman.filepicker.config.Configurations;
 import com.jaiselrahman.filepicker.model.MediaFile;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -54,6 +56,7 @@ public class RentalActivity extends AppCompatActivity {
     Uri postImageUri = null;
     String postImageLink = null;
     String uploadTime;
+    String uploadDate;
     private DatabaseReference mDatabase;
     ProgressDialog progressDialog;
     FirebaseStorage storage;
@@ -66,6 +69,8 @@ public class RentalActivity extends AppCompatActivity {
 
     private String category = "Rent";
     private Boolean imageEmpty = true;
+
+    Calendar calendar = Calendar.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,6 +110,8 @@ public class RentalActivity extends AppCompatActivity {
         array = new ArrayList<PostImages>();
         // getSupportActionBar().setTitle("Create Post");
         String[] catArray = {"Select Item", "Roomates",  "Renting"};
+        String currentdate = DateFormat.getDateInstance().format(calendar.getTime());
+        uploadDate = currentdate;
         String currentTime = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());
         uploadTime = currentTime;
         // setting data to adapter
@@ -204,6 +211,7 @@ public class RentalActivity extends AppCompatActivity {
                 edt_street.getText().toString(),
                 edt_province.getText().toString(),
                 edt_postal.getText().toString(),
+                uploadDate,
                 key,
                 uploadTime,
                 currentuser,
