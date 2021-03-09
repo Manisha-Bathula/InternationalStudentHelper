@@ -2,10 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.internationalstudenthelper">
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-
-
-
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.SEND_SMS" />
@@ -17,13 +16,17 @@
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
+
         android:allowBackup="true"
         android:icon="@drawable/applogo"
         android:label="GBC ISH"
         android:roundIcon="@drawable/applogo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.gbcish.ElectronicsActivity"></activity>
+        <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyBlw_dMVWjZf2OyeldB5vcb7EyhtDjRdZY"/>
+
+        <activity android:name="com.gbcish.MapActivity"></activity>
+        <activity android:name="com.gbcish.ElectronicsActivity" />
         <activity android:name="com.gbcish.ExploreDetailsActivity" />
 
         <uses-library

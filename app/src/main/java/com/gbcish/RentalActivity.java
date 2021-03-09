@@ -235,6 +235,9 @@ public class RentalActivity extends AppCompatActivity {
                 imageEmpty = true;
                 showSelectedImage.setImageResource(R.drawable.ic_photo);
                 progressDialog.dismiss();
+
+                Intent i= new Intent(RentalActivity.this, ExploreActivity.class);
+                startActivity(i);
                 //Toast.makeText(PostActivity.this, "Post has been created", Toast.LENGTH_SHORT).show();
 
             }

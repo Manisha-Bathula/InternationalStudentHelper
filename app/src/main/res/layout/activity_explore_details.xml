@@ -60,12 +60,11 @@
 
                     >
 
-                    <ImageView
+                    <androidx.viewpager.widget.ViewPager
+                        android:id="@+id/viewPagerMain"
                         android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        android:scaleType="centerCrop"
-                        android:id="@+id/post_image"
-                        />
+                        android:layout_height="match_parent"/>
+
                 </RelativeLayout>
 
 
@@ -180,6 +179,18 @@
                     android:scrollbars="vertical"
                     />
             </LinearLayout>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:padding="16dp"
+                android:layout_marginTop="26dp"
+                android:background="@color/colorPrimary"
+                android:layout_height="wrap_content"
+                android:text="GET DIRECTION"
+                android:id="@+id/bt_get_direction">
+
+            </Button>
             </LinearLayout>
 
 

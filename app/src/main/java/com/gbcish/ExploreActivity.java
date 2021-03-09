@@ -61,6 +61,7 @@ public class ExploreActivity extends AppCompatActivity implements ExploreAdapter
         databaseRef = FirebaseDatabase.getInstance().getReference();
         final DatabaseReference addRentalPosts = databaseRef.child("AddRentalPosts");
 
+        postModelList.clear();
         addRentalPosts.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -69,8 +70,8 @@ public class ExploreActivity extends AppCompatActivity implements ExploreAdapter
                     PostModel c = snap.getValue(PostModel.class);
                     Log.d("Categories: ", c.getPost_rent() + " " + c.getPost_description());
                     postModelList.add(c);
-                    retriveJobPosts(databaseRef);
                 }
+                retriveJobPosts(databaseRef);
 
             }
 
@@ -169,7 +170,7 @@ public class ExploreActivity extends AppCompatActivity implements ExploreAdapter
         }
         super.onBackPressed();
     }
-    public void retriveJobPosts(DatabaseReference databaseRef2){
+    public void retriveJobPosts(final DatabaseReference databaseRef2){
 
         final DatabaseReference addJobPosts = databaseRef2.child("AddJobPosts");
 
@@ -181,9 +182,31 @@ public class ExploreActivity extends AppCompatActivity implements ExploreAdapter
                     PostModel c = snap.getValue(PostModel.class);
                     Log.d("Categories: ", c.getPost_rent() + " " + c.getPost_description());
                     postModelList.add(c);
-                    exploreAdapter.notifyDataSetChanged();
-                }
 
+                }
+                retriveElectronicsPosts(databaseRef2);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+    public void retriveElectronicsPosts(DatabaseReference databaseRef2){
+
+        final DatabaseReference addelectronicPosts = databaseRef2.child("AddElectronicsPosts");
+
+        addelectronicPosts.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                for (DataSnapshot snap: snapshot.getChildren()){
+                    PostModel c = snap.getValue(PostModel.class);
+                    Log.d("Categories: ", c.getPost_rent() + " " + c.getPost_description());
+                    postModelList.add(c);
+                }
+                exploreAdapter.notifyDataSetChanged();
             }
 
             @Override
