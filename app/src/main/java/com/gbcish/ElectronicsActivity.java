@@ -76,6 +76,8 @@ public class ElectronicsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_electronics);
 
+        getSupportActionBar().hide();
+
         postTitle = findViewById(R.id.title);
         postDescription = findViewById(R.id.w_r_u_selling);
         postPrice = findViewById(R.id.price);
