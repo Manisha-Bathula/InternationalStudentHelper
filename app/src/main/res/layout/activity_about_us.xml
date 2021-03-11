@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/te"
+    style="@style/CardView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/BackgroundColor"
+    tools:context="com.gbcish.AboutUsActivity">
+
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:alignmentMode="alignMargins"
+        android:columnCount="1"
+        android:columnOrderPreserved="false"
+        android:gravity="center"
+        android:rowCount="4">
+
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/dashboard_abtus"
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="10dp"
+            android:layout_marginTop="40dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#DDE9EF"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Dashboard page is where you could find general trending information around you."
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Go to -->      "
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="#98D5F1"
+                        android:onClick="gotodashboard"
+                        android:text="Dashboard"
+                        android:textSize="18sp"></Button>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/post_abtus"
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="10dp"
+            android:layout_marginTop="30dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#F0C9F6"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Post Page is where you could upload an ad in seconds by filling necessary information."
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Go to -->      "
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="#DE76F1"
+                        android:onClick="gotopost"
+                        android:text="Post"
+                        android:textSize="18dp"></Button>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/currency_abtus"
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="10dp"
+            android:layout_marginTop="30dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#F4F8C8"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Currency Converter, converts amounts from one currency to others."
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Go to -->      "
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="#F4FF81"
+                        android:onClick="gotocurrency"
+                        android:text="Currency Converter"
+                        android:textSize="18dp"></Button>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/contact_abtus"
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="10dp"
+            android:layout_marginTop="30dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#F3D2C9"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="For Further more information."
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Go to -->      "
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="#ED6969"
+                        android:onClick="gotocontact"
+                        android:text="Contact us"
+                        android:textSize="18dp"></Button>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+    </GridLayout>
+</FrameLayout>

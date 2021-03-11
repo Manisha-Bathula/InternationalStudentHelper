@@ -26,6 +26,7 @@
         <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyBlw_dMVWjZf2OyeldB5vcb7EyhtDjRdZY"/>
 
         <activity android:name="com.gbcish.MapActivity"></activity>
+        <activity android:name="com.gbcish.AboutUsActivity" />
         <activity android:name="com.gbcish.ElectronicsActivity" />
         <activity android:name="com.gbcish.ExploreDetailsActivity" />
 

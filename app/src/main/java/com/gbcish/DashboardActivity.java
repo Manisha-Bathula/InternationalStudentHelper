@@ -144,6 +144,13 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                 //finish();
                 break;
 
+            case R.id.nav_aboutus:
+                Intent intent4 = new Intent(DashboardActivity.this, AboutUsActivity.class);
+                startActivity(intent4);
+                // do not finish home page. otherwise you can not go back to home page.
+                //finish();
+                break;
+
             case R.id.nav_profile:
                 Intent intent3 = new Intent(DashboardActivity.this, ProfileActivity.class);
                 startActivity(intent3);

@@ -37,6 +37,7 @@ import com.jaiselrahman.filepicker.activity.FilePickerActivity;
 import com.jaiselrahman.filepicker.config.Configurations;
 import com.jaiselrahman.filepicker.model.MediaFile;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -109,6 +110,8 @@ public class ElectronicsActivity extends AppCompatActivity {
         array = new ArrayList<PostImages>();
         // getSupportActionBar().setTitle("Create Post");
         String[] catArray = {"Select Item", "Mobiles",  "Laptops"};
+        String currentdate = DateFormat.getDateInstance().format(calender.getTime());
+        uploadDate = currentdate;
         String currentTime = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());
         uploadTime = currentTime;
         // setting data to adapter
