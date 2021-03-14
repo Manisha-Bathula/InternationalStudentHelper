@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/BackgroundColor"
+    android:background="@drawable/bg"
     tools:context="com.gbcish.ExploreActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -16,6 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
+            app:titleTextColor="#fff"
             app:popupTheme="@style/AppTheme.AppBarOverlay"
             android:id="@+id/toolbar2">
         </androidx.appcompat.widget.Toolbar>

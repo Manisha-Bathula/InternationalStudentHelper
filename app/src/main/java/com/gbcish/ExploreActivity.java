@@ -47,6 +47,7 @@ public class ExploreActivity extends AppCompatActivity implements ExploreAdapter
 
         // toolbar fancy stuff
         getSupportActionBar().setTitle("Explore");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         rentalRecyclerView=findViewById(R.id.rentalRecyclerView);
         layoutManager = new LinearLayoutManager(this);
         rentalRecyclerView.setLayoutManager(layoutManager);
@@ -94,7 +95,14 @@ public class ExploreActivity extends AppCompatActivity implements ExploreAdapter
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_search) {
             return true;
+
         }
+        switch (id){
+            case  android.R.id.home:
+                finish();
+                break;
+        }
+
 
         return super.onOptionsItemSelected(item);
     }

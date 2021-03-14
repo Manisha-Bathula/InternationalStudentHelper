@@ -11,6 +11,8 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -38,6 +40,7 @@ import com.jaiselrahman.filepicker.config.Configurations;
 import com.jaiselrahman.filepicker.model.MediaFile;
 
 import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -53,6 +56,7 @@ public class RentalActivity extends AppCompatActivity {
     ImageView showSelectedImage, back_img;
     ///  Button  submitPost;
     String postCat = null;
+    String postProvinance=null;
     Uri postImageUri = null;
     String postImageLink = null;
     String uploadTime;
@@ -69,6 +73,8 @@ public class RentalActivity extends AppCompatActivity {
 
     private String category = "Rent";
     private Boolean imageEmpty = true;
+    Spinner sp_rent;
+    ArrayList<String> proniceNames=new ArrayList<>();
 
     Calendar calendar = Calendar.getInstance();
 
@@ -85,6 +91,7 @@ public class RentalActivity extends AppCompatActivity {
         edt_postal=findViewById(R.id.edt_post_code);
         //addImage = findViewById(R.id.add_image);
         categorySpinner = findViewById(R.id.catagory);
+        sp_rent=findViewById(R.id.spinner_rent);
         // submitPost = findViewById(R.id.submit_post);
         showSelectedImage = findViewById(R.id.show_selected_image);
         selectedImagesRV = findViewById(R.id.selectedImagesRV);
@@ -96,6 +103,12 @@ public class RentalActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        proniceNames.add("Ontario");
+        proniceNames.add("Quebec");
+        proniceNames.add("Alberta");
+        proniceNames.add("British Colombia");
+        proniceNames.add("Nova Scotia");
 //        imageErrorMsg = findViewById(R.id.image_error_msg);
 //        CatErrorMsg = findViewById(R.id.cat_error_msg);
         mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -121,6 +134,26 @@ public class RentalActivity extends AppCompatActivity {
         // attaching data adapter to spinner
         categorySpinner.setAdapter(dataAdapter);
 
+
+        ArrayAdapter<String> provinceAdapter=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,proniceNames);
+        provinceAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sp_rent.setAdapter(provinceAdapter);
+
+
+        sp_rent.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                if (!sp_rent.getSelectedItem().toString().equals("Select Item")){
+                    postProvinance=sp_rent.getSelectedItem().toString();
+                    Log.d("spinner_item",postProvinance);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
         categorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(
                     AdapterView<?> adapterView, View view,
@@ -135,6 +168,32 @@ public class RentalActivity extends AppCompatActivity {
 
             public void onNothingSelected(
                     AdapterView<?> adapterView) {
+
+            }
+        });
+        postPrice.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                String input = charSequence.toString();
+                if (!input.isEmpty()) {
+                    input = input.replace(",", "");
+                    DecimalFormat format = new DecimalFormat("#,###,###");
+                    String newPrice = format.format(Double.parseDouble(input));
+                    postPrice.removeTextChangedListener(this);
+                    postPrice.setText(newPrice);
+                    postPrice.setSelection(newPrice.length());
+                    postPrice.addTextChangedListener(this);
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
 
             }
         });
@@ -160,9 +219,8 @@ public class RentalActivity extends AppCompatActivity {
         }else if (edt_street.getText().toString().isEmpty()){
             edt_street.setError("Please enter street name");
             edt_street.requestFocus();
-        }else if (edt_province.getText().toString().isEmpty()){
-            edt_province.setError("Please enter provinance name");
-            edt_province.requestFocus();
+        }else if (postProvinance==null){
+            Toast.makeText(this, "Please enter provinance name", Toast.LENGTH_SHORT).show();
         }else if (edt_postal.getText().toString().isEmpty()){
             edt_postal.setError("Please enter postal code");
             edt_postal.requestFocus();
@@ -203,13 +261,16 @@ public class RentalActivity extends AppCompatActivity {
     void createPost() {
         String currentuser = FirebaseAuth.getInstance().getCurrentUser().getUid();
         String key = mDatabase.child("posts").push().getKey();
+        String price=postPrice.getText().toString();
+        String new_price = price.replace(",", "");
+        Log.i("jenny" ,price);
         PostModel user_posts = new PostModel(postTitle.getText().toString(),
                 postCat,
                 postDescription.getText().toString(),
-                postPrice.getText().toString(),
+                price,
                 postLocation.getText().toString(),
                 edt_street.getText().toString(),
-                edt_province.getText().toString(),
+                postProvinance,
                 edt_postal.getText().toString(),
                 uploadDate,
                 key,
@@ -223,6 +284,7 @@ public class RentalActivity extends AppCompatActivity {
             @Override
             public void onSuccess(Void aVoid) {
                 postCat = null;
+                postProvinance=null;
                 postTitle.getText().clear();
                 postDescription.getText().clear();
                 postPrice.getText().clear();

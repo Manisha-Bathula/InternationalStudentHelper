@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="10dp"
-    android:background="@color/BackgroundColor"
+    android:background="@drawable/bg"
     tools:context="com.gbcish.LoginActivity">
 
     <ImageView
@@ -24,7 +24,7 @@
         android:gravity="center"
         android:text="Login"
         android:textStyle="bold"
-        android:textColor="@color/TextWhite"
+        android:textColor="#333"
         android:textSize="35sp" />
 
     <EditText
@@ -60,9 +60,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:background="#9973DF"
+        android:background="#F44336"
         android:text="Sign In"
-        android:textColor="#FFFFFF" />
+        android:textColor="@color/TextWhite" />
 
     <Button
         android:layout_width="match_parent"
@@ -70,11 +70,10 @@
         android:id="@+id/bt_google_sigin"
         android:text="Sign up using Google"
         android:layout_marginTop="6dp"
-        android:background="#9973DF"
+        android:background="#F44336"
         android:drawable="@drawable/google"
         android:textColor="#FFFFFF"/>
 
-    /
 
     <TextView
         android:id="@+id/tv_register"

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/BackgroundColor"
+    android:background="@drawable/bg"
     android:padding="10dp"
     android:orientation="vertical"
     tools:context="com.gbcish.RegisterActivity">
@@ -22,7 +22,7 @@
         android:fontFamily="@font/aclonica"
         android:gravity="center"
         android:text="Create New Account"
-        android:textColor="@color/TextWhite"
+        android:textColor="#333"
         android:textSize="18sp" />
 
     <EditText
@@ -89,7 +89,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
-        android:background="#9973DF"
+        android:background="#F44336"
         android:text="Register"
         android:textColor="#FFFFFF" />
 
@@ -101,7 +101,7 @@
         android:gravity="center"
         android:onClick="login"
         android:text="Already registered??? Login Here"
-        android:textColor="@color/TextWhite" />
+        android:textColor="#333" />
 
 
 </LinearLayout>

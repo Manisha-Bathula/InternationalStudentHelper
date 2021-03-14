@@ -11,6 +11,8 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -39,6 +41,7 @@ import com.jaiselrahman.filepicker.config.Configurations;
 import com.jaiselrahman.filepicker.model.MediaFile;
 
 import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -71,8 +74,13 @@ public class JobSearchActivity extends AppCompatActivity {
     String pattern = "^[A-Z]{1,2}[0-9R][0-9A-Z]? [0-9][ABD-HJLNP-UW-Z]{2}$";
     private String category = "Job";
     private Boolean imageEmpty = true;
+    String postProvinance=null;
 
-    Calendar calender = Calendar.getInstance();
+    Calendar calender =Calendar.getInstance();
+
+    Spinner sp_rent;
+    ArrayList<String> proniceNames=new ArrayList<>();
+
 
 
 
@@ -85,9 +93,10 @@ public class JobSearchActivity extends AppCompatActivity {
         postDescription = findViewById(R.id.w_r_u_selling);
         postPrice = findViewById(R.id.price);
         postLocation = findViewById(R.id.add_location);
-        edt_street=findViewById(R.id.edt_street);
-        edt_province=findViewById(R.id.edt_province);
-        edt_postal=findViewById(R.id.edt_post_code);
+        edt_street = findViewById(R.id.edt_street);
+        edt_province = findViewById(R.id.edt_province);
+        edt_postal = findViewById(R.id.edt_post_code);
+        sp_rent=findViewById(R.id.spinner_rent);
         //addImage = findViewById(R.id.add_image);
         categorySpinner = findViewById(R.id.catagory);
         // submitPost = findViewById(R.id.submit_post);
@@ -115,12 +124,21 @@ public class JobSearchActivity extends AppCompatActivity {
         array = new ArrayList<PostImages>();
         // getSupportActionBar().setTitle("Create Post");
         postalCodeJob = String.valueOf(edt_postal);
-        String[] catArray = {"Select Item", "Part-Time",  "Full-Time"};
+
+        proniceNames.add("Ontario");
+        proniceNames.add("Quebec");
+        proniceNames.add("Alberta");
+        proniceNames.add("British Colombia");
+        proniceNames.add("Nova Scotia");
+
+        String[] catArray = {"Select Item", "Part-Time", "Full-Time"};
         String currentdate = DateFormat.getDateInstance().format(calender.getTime());
         uploadDate = currentdate;
         String currentTime = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());
         uploadTime = currentTime;
         // setting data to adapter
+
+
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, catArray);
         // Drop down layout style - list view with radio button
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -141,6 +159,54 @@ public class JobSearchActivity extends AppCompatActivity {
 
             public void onNothingSelected(
                     AdapterView<?> adapterView) {
+
+            }
+        });
+
+
+        ArrayAdapter<String> provinceAdapter=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,proniceNames);
+        provinceAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sp_rent.setAdapter(provinceAdapter);
+
+
+        sp_rent.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                if (!sp_rent.getSelectedItem().toString().equals("Select Item")){
+                    postProvinance=sp_rent.getSelectedItem().toString();
+                    Log.d("spinner_item",postProvinance);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        postPrice.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                String input = charSequence.toString();
+                if (!input.isEmpty()) {
+                    input = input.replace(",", "");
+                    DecimalFormat format = new DecimalFormat("#,###,###");
+                    String newPrice = format.format(Double.parseDouble(input));
+                    postPrice.removeTextChangedListener(this);
+                    postPrice.setText(newPrice);
+                    postPrice.setSelection(newPrice.length());
+                    postPrice.addTextChangedListener(this);
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
 
             }
         });
@@ -175,9 +241,8 @@ public class JobSearchActivity extends AppCompatActivity {
         }else if (edt_street.getText().toString().isEmpty()){
             edt_street.setError("Please enter street name");
             edt_street.requestFocus();
-        }else if (edt_province.getText().toString().isEmpty()){
-            edt_province.setError("Please enter provinance name");
-            edt_province.requestFocus();
+        }else if (postProvinance==null){
+            Toast.makeText(this, "Please enter provinance name", Toast.LENGTH_SHORT).show();
         }else if (edt_postal.getText().toString().isEmpty()){
             edt_postal.setError("Please enter postal code");
             //here we can check postal code.
@@ -219,13 +284,15 @@ public class JobSearchActivity extends AppCompatActivity {
     void createPost() {
         String currentuser = FirebaseAuth.getInstance().getCurrentUser().getUid();
         String key = mDatabase.child("posts").push().getKey();
+        String price=postPrice.getText().toString();
+        //price = price.replace(",", "");
         PostModel user_posts = new PostModel(postTitle.getText().toString(),
                 postCat,
                 postDescription.getText().toString(),
-                postPrice.getText().toString(),
+                price,
                 postLocation.getText().toString(),
                 edt_street.getText().toString(),
-                edt_province.getText().toString(),
+                postProvinance,
                 edt_postal.getText().toString(),
                 uploadDate,
                 key,
@@ -239,6 +306,7 @@ public class JobSearchActivity extends AppCompatActivity {
             @Override
             public void onSuccess(Void aVoid) {
                 postCat = null;
+                postProvinance=null;
                 postTitle.getText().clear();
                 postDescription.getText().clear();
                 postPrice.getText().clear();
