@@ -89,6 +89,8 @@ public class JobSearchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_job_search);
 
+        getSupportActionBar().hide();
+
         postTitle = findViewById(R.id.title);
         postDescription = findViewById(R.id.w_r_u_selling);
         postPrice = findViewById(R.id.price);
