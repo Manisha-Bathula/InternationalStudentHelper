@@ -180,12 +180,17 @@ public class RentalActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 String input = charSequence.toString();
+               // String input =String.format("%.2f", Double.parseDouble(input1));
+               // Log.i("jeni", "pricedeci=>"+input) ;
                 if (!input.isEmpty()) {
                     input = input.replace(",", "");
                     DecimalFormat format = new DecimalFormat("#,###,###");
-                    String newPrice = format.format(Double.parseDouble(input));
+                    String newPrice = format.format( Double.parseDouble(input));
+
+
                     postPrice.removeTextChangedListener(this);
-                    postPrice.setText(newPrice);
+                    postPrice.setText(newPrice +".00");
+
                     postPrice.setSelection(newPrice.length());
                     postPrice.addTextChangedListener(this);
                 }

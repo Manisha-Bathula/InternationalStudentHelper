@@ -21,6 +21,11 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.internationalstudenthelper.R;
 import com.gbcish.Fragments.NewsFragment;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -32,11 +37,32 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     private FirebaseAuth mAuth;
     private ActionBarDrawerToggle mDrawerToggle;
 
+    AdView mAdView;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
+
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+
+            }
+        });
+
+        mAdView = findViewById(R.id.adViewDashboard);
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice("0314cafa-f8e9-42ac-a37d-286d257a2b05").build();
+        mAdView.loadAd(adRequest);
+
+
+
+
+
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -61,12 +87,6 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.home_main, menu);
-        return true;
-    }
 
     @Override
     public boolean onSupportNavigateUp() {
@@ -74,28 +94,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
         }
-        @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will 
-            // automatically handle clicks on the Home/Up button, so long 
-            // as you specify a parent acti
-            // vity in AndroidManifest.xml.
 
-            int id = item.getItemId();
-            switch (id){
-            //case R.id.action_Prf:
-                   // Intent intent = new Intent(getApplicationContext(),ProfileActivity.class);
-                    //startActivity(intent);
-                    //break;
-                    case R.id.action_Lgt:
-                        mAuth.signOut();
-                        Intent i = new Intent(getApplicationContext(),LoginActivity.class);
-                        startActivity(i);
-                        finish();
-                        break;
-            }
-            return super.onOptionsItemSelected(item);
-    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -156,6 +155,13 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                 startActivity(intent3);
                 // do not finish home page. otherwise you can not go back to home page.
                 //finish();
+                break;
+
+            case  R.id.nav_logout:
+                mAuth.signOut();
+                Intent intent5 = new Intent(getApplicationContext(),LoginActivity.class);
+                startActivity(intent5);
+                finish();
                 break;
 
 

@@ -192,7 +192,9 @@ public class ElectronicsActivity extends AppCompatActivity {
                     DecimalFormat format = new DecimalFormat("#,###,###");
                     String newPrice = format.format(Double.parseDouble(input));
                     postPrice.removeTextChangedListener(this);
-                    postPrice.setText(newPrice);
+                   // postPrice.setText(newPrice);
+                    postPrice.setText(newPrice +".00");
+
                     postPrice.setSelection(newPrice.length());
                     postPrice.addTextChangedListener(this);
                 }

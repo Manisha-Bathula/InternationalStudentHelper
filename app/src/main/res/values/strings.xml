@@ -39,5 +39,8 @@
     <string name="title_activity_explore_detail_main">ExploreDetailMainActivity</string>
     <string name="title_activity_news_detail_screen">newsDetailScreenActivity</string>
 
+    <string name="app_id_admob">ca-app-pub-9237984898458804~4353097180</string>
+    <string name="banner_ad_unit">ca-app-pub-9237984898458804/8589045036</string>
+
 
 </resources>

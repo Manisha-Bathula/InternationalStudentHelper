@@ -124,7 +124,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Title"
-                            android:textColor="#333"
+                            android:textColor="#fff"
                             android:textSize="16sp"
                             android:layout_marginTop="10dp"
                             android:layout_gravity="center_vertical" />
@@ -146,7 +146,7 @@
                             android:layout_height="wrap_content"
                             android:text="Category"
                             android:layout_marginTop="10dp"
-                            android:textColor="#333"
+                            android:textColor="#fff"
                             android:textSize="16sp"
                             android:layout_gravity="center_vertical" />
 
@@ -165,7 +165,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Description"
-                            android:textColor="#333"
+                            android:textColor="#fff"
                             android:textSize="16sp"
                             android:layout_marginTop="10dp"/>
                         <EditText
@@ -190,7 +190,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:text="Rent"
-                            android:textColor="#333"
+                            android:textColor="#fff"
                             android:textSize="16sp"
                             android:layout_gravity="center_vertical" />
 
@@ -211,7 +211,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="City"
-                            android:textColor="#333"
+                            android:textColor="#fff"
                             android:textSize="18sp"
                             android:layout_gravity="center_vertical"
                             android:layout_marginTop="10dp"/>
@@ -231,7 +231,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Street"
-                            android:textColor="#333"
+                            android:textColor="#fff"
                             android:textSize="18sp"
                             android:layout_gravity="center_vertical"
                             android:layout_marginTop="10dp"/>
@@ -251,7 +251,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Province Name"
-                            android:textColor="#333"
+                            android:textColor="#fff"
                             android:textSize="18sp"
                             android:layout_gravity="center_vertical"
                             android:layout_marginTop="10dp"/>
@@ -276,7 +276,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Postal Code"
-                            android:textColor="#333"
+                            android:textColor="#fff"
                             android:textSize="18sp"
                             android:layout_gravity="center_vertical"
                             android:layout_marginTop="10dp"/>

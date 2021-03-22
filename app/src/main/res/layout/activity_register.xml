@@ -22,7 +22,7 @@
         android:fontFamily="@font/aclonica"
         android:gravity="center"
         android:text="Create New Account"
-        android:textColor="#333"
+        android:textColor="#fff"
         android:textSize="18sp" />
 
     <EditText
@@ -101,7 +101,7 @@
         android:gravity="center"
         android:onClick="login"
         android:text="Already registered??? Login Here"
-        android:textColor="#333" />
+        android:textColor="#fff" />
 
 
 </LinearLayout>
