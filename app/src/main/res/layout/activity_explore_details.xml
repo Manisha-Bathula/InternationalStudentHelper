@@ -55,15 +55,15 @@
                 </LinearLayout>
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
+                    android:layout_height="150dp"
                     android:background="#22000000"
 
                     >
 
                     <androidx.viewpager.widget.ViewPager
                         android:id="@+id/viewPagerMain"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"/>
+                        android:layout_width="wrap_content"
+                        android:layout_height="150dp"/>
 
                 </RelativeLayout>
 
@@ -184,13 +184,58 @@
                 android:layout_width="wrap_content"
                 android:layout_gravity="center"
                 android:padding="16dp"
-                android:layout_marginTop="26dp"
+                android:layout_marginTop="10dp"
                 android:background="@color/colorPrimary"
                 android:layout_height="wrap_content"
                 android:text="GET DIRECTION"
                 android:id="@+id/bt_get_direction">
-
             </Button>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+                <Button
+                    android:id="@+id/bt_call_seller"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="15dp"
+                    android:background="#89BBF4"
+                    android:padding="16dp"
+                    android:onClick="callseller"
+                    android:text="CALL"></Button>
+
+                <Button
+                    android:id="@+id/bt_sms_seller"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:background="#F1A664"
+                    android:padding="16dp"
+                    android:onClick="smsseller"
+                    android:text="SMS"></Button>
+
+                <Button
+                    android:id="@+id/bt_email_seller"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:background="#DD72AB"
+                    android:padding="16dp"
+                    android:onClick="emailseller"
+                    android:text="EMAIL">
+
+                </Button>
+            </LinearLayout>
+
+
             </LinearLayout>
 
 
