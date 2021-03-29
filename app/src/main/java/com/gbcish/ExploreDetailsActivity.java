@@ -52,13 +52,14 @@ public class ExploreDetailsActivity extends AppCompatActivity {
     ViewPager mViewPager;
     ViewPagerAdapter viewPagerAdapter;
     ArrayList<PostImages> images;
-    Button bt_get_direction;
+    Button bt_get_direction,bt_sms_seller;
     private static final int REQUEST_CALL = 1;
     FirebaseFirestore db;
     PostModel postModel;
     CollectionReference cities;
     String email = "";
     String phoneNumber = "";
+    private  String sellername,username;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,8 +72,16 @@ public class ExploreDetailsActivity extends AppCompatActivity {
         postModel= (PostModel) it.getSerializableExtra("PostModel");
         String pt=postModel.getPost_category();
         String p1t=postModel.getPost_city();
+         sellername=postModel.getUser_id();
 
         bt_get_direction=findViewById(R.id.bt_get_direction);
+        bt_sms_seller=findViewById(R.id.bt_sms_seller);
+        bt_sms_seller.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),ChatBoxActivity.class).putExtra("sellername",username));
+            }
+        });
         bt_get_direction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,6 +117,7 @@ public class ExploreDetailsActivity extends AppCompatActivity {
                     if (data.getString("Userid").equals(postModel.getUser_id())){
                         phoneNumber = data.getString("Phone");
                         email = data.getString("Email");
+                        username=data.getString("Name");
                         Toast.makeText(getApplicationContext(), phoneNumber+ email, Toast.LENGTH_SHORT).show();
                     }
                 }

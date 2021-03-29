@@ -41,6 +41,7 @@
 
     <string name="app_id_admob">ca-app-pub-9237984898458804~4353097180</string>
     <string name="banner_ad_unit">ca-app-pub-9237984898458804/8589045036</string>
+    <string name="title_activity_chat_box">ChatBoxActivity</string>
 
 
 </resources>
