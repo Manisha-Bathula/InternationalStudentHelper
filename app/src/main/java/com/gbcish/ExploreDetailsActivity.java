@@ -52,7 +52,7 @@ public class ExploreDetailsActivity extends AppCompatActivity {
     ViewPager mViewPager;
     ViewPagerAdapter viewPagerAdapter;
     ArrayList<PostImages> images;
-    Button bt_get_direction,bt_sms_seller;
+    Button bt_get_direction,bt_sms_seller,bt_chat_seller;
     private static final int REQUEST_CALL = 1;
     FirebaseFirestore db;
     PostModel postModel;
@@ -76,10 +76,18 @@ public class ExploreDetailsActivity extends AppCompatActivity {
 
         bt_get_direction=findViewById(R.id.bt_get_direction);
         bt_sms_seller=findViewById(R.id.bt_sms_seller);
+        bt_chat_seller=findViewById(R.id.bt_chat_seller);
+        bt_chat_seller.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),ChatBoxActivity.class));
+            }
+        });
+
         bt_sms_seller.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),ChatBoxActivity.class).putExtra("sellername",username));
+
             }
         });
         bt_get_direction.setOnClickListener(new View.OnClickListener() {
