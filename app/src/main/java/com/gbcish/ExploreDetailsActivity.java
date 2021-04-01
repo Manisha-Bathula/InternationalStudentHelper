@@ -50,9 +50,10 @@ public class ExploreDetailsActivity extends AppCompatActivity {
     private ImageView post_image;
     // creating object of ViewPager
     ViewPager mViewPager;
+    ImageView bt_chat_seller;
     ViewPagerAdapter viewPagerAdapter;
     ArrayList<PostImages> images;
-    Button bt_get_direction,bt_sms_seller,bt_chat_seller;
+    Button bt_get_direction,bt_sms_seller;
     private static final int REQUEST_CALL = 1;
     FirebaseFirestore db;
     PostModel postModel;

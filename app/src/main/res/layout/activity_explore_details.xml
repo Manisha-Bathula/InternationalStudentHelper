@@ -8,6 +8,9 @@
     android:background="@drawable/bg"
     tools:context="com.gbcish.ExploreDetailsActivity">
 
+
+
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -17,9 +20,14 @@
         android:layout_below="@id/header"
 
         android:id="@+id/cardViewMain">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:paddingBottom="16dp"
             android:orientation="vertical">
 
                 <LinearLayout
@@ -191,15 +199,17 @@
                 android:id="@+id/bt_get_direction">
             </Button>
 
-            <Button
+            <ImageView
                 android:id="@+id/bt_chat_seller"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:layout_marginTop="10dp"                android:layout_gravity="center"
+                android:layout_width="70dp"
+                android:layout_height="19dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
                 android:background="#F1A664"
                 android:onClick="smsseller"
-                android:text="Chat"></Button>
+                android:padding="16dp"
+                android:src="@drawable/sms"
+                android:text="Chat"></ImageView>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -247,6 +257,7 @@
 
             </LinearLayout>
 
+        </ScrollView>
 
     </androidx.cardview.widget.CardView>
 
