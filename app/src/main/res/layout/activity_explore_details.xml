@@ -191,73 +191,88 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_gravity="center"
-                android:padding="16dp"
-                android:layout_marginTop="10dp"
+                android:padding="5dp"
+                android:layout_marginTop="7dp"
                 android:background="@color/colorPrimary"
                 android:layout_height="wrap_content"
                 android:text="GET DIRECTION"
                 android:id="@+id/bt_get_direction">
             </Button>
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Click below to chat with seller"
+                android:textSize="18dp"
+                android:layout_marginTop="5dp"
+                android:paddingLeft="15dp"/>
+
             <ImageView
                 android:id="@+id/bt_chat_seller"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:background="#F1A664"
+                android:src="@drawable/chatbox"
+                android:background="#FFFFFF"
                 android:onClick="smsseller"
-                android:padding="16dp"
-                android:text="Chat"></ImageView>
+                android:padding="16dp">
+
+            </ImageView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Click below to contsct seller"
+                android:textSize="18dp"
+                android:layout_marginTop="5dp"
+                android:paddingLeft="15dp"/>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
                 <ImageButton
                     android:id="@+id/bt_call_seller"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:layout_gravity="left"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginRight="15dp"
-                    android:src="@drawable/ic_phonecall"
-                    android:background="#89BBF4"
-                    android:padding="16dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:background="#FFFFFF"
                     android:onClick="callseller"
+                    android:padding="16dp"
+                    android:src="@drawable/ic_phonecall"
                     android:text="CALL"></ImageButton>
 
                 <ImageButton
                     android:id="@+id/bt_sms_seller"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp"
-                    android:background="#F1A664"
-                    android:padding="16dp"
-                    android:src="@drawable/chat"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
                     android:onClick="smsseller"
+                    android:background="#FFFFFF"
+                    android:src="@drawable/sms"
                     android:text="SMS"></ImageButton>
 
                 <ImageButton
                     android:id="@+id/bt_email_seller"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_gravity="right"
-                    android:src="@drawable/mail"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp"
-                    android:background="#DD72AB"
-                    android:padding="16dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:onClick="emailseller"
-                    android:text="EMAIL">
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="5dp"
+                    android:background="#FFFFFF"
+                    android:src="@drawable/gmail">
 
                 </ImageButton>
             </LinearLayout>
 
 
-            </LinearLayout>
+        </LinearLayout>
 
         </ScrollView>
 

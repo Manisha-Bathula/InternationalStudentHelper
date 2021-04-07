@@ -131,7 +131,7 @@ public class ExploreDetailsActivity extends AppCompatActivity {
                         phoneNumber = data.getString("Phone");
                         email = data.getString("Email");
                         username=data.getString("Name");
-                        Toast.makeText(getApplicationContext(), phoneNumber+ email, Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getApplicationContext(), phoneNumber+ email, Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -163,6 +163,7 @@ public class ExploreDetailsActivity extends AppCompatActivity {
     }
 
     public void smsseller(View view) {
+        
         Intent intent = new Intent(Intent.ACTION_SENDTO);
         intent.setData(Uri.parse("smsto:" +phoneNumber)); // This ensures only SMS apps respond
         intent.putExtra("sms_body",
