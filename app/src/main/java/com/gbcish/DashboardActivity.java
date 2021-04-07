@@ -110,6 +110,10 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
             case R.id.nav_home:
                fragment=new ExploreFragment();
                 break;
+
+            case R.id.nav_chats:
+                startActivity(new Intent(getApplicationContext(),ChatActivity2.class));
+                break;
             case R.id.nav_explore:
                 Intent i=new Intent(DashboardActivity.this,ExploreActivity.class);
                 startActivity(i);

@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -53,7 +54,8 @@ public class ExploreDetailsActivity extends AppCompatActivity {
     ImageView bt_chat_seller;
     ViewPagerAdapter viewPagerAdapter;
     ArrayList<PostImages> images;
-    Button bt_get_direction,bt_sms_seller;
+    Button bt_get_direction;
+    ImageButton bt_sms_seller;
     private static final int REQUEST_CALL = 1;
     FirebaseFirestore db;
     PostModel postModel;
@@ -81,7 +83,7 @@ public class ExploreDetailsActivity extends AppCompatActivity {
         bt_chat_seller.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),ChatBoxActivity.class));
+                startActivity(new Intent(getApplicationContext(),ChatActivity2.class));
             }
         });
 

@@ -30,7 +30,7 @@ public class ChatBoxActivity extends AppCompatActivity {
     private ListView list_of_messages;
     private FirebaseListAdapter<ChatMessages> adapter;
     private FirebaseListOptions<ChatMessages> options;
-    private String sellername,chatid,currentuser;
+    private String sellername,chatid,currentuser,sellerId,customerId;
     private FirebaseAuth mAuth=FirebaseAuth.getInstance();
 
     @Override
@@ -41,6 +41,7 @@ public class ChatBoxActivity extends AppCompatActivity {
         mAuth=FirebaseAuth.getInstance();
         Intent i=getIntent();
          currentuser=mAuth.getCurrentUser().getDisplayName();
+        sellerId=mAuth.getCurrentUser().getEmail();
          sellername="";
         chatid=sellername+currentuser;
 //        mAuth = com.google.firebase.auth.FirebaseAuth.getInstance();
@@ -49,7 +50,7 @@ public class ChatBoxActivity extends AppCompatActivity {
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
-        Query query = databaseReference.orderByChild("chatID").equalTo(chatid);
+        Query query = databaseReference.orderByChild("SellerID").orderByChild("CustomerID").equalTo(sellerId).equalTo(customerId);
 
      options = new FirebaseListOptions.Builder<ChatMessages>()
                 .setLayout(R.layout.message)//Note: The guide doesn't mention this method, without it an exception is thrown that the layout has to be set.
@@ -62,23 +63,24 @@ public class ChatBoxActivity extends AppCompatActivity {
         et_input=findViewById(R.id.et_input);
         list_of_messages=findViewById(R.id.list_of_messages);
 
-        bt_send.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                FirebaseDatabase.getInstance()
-                        .getReference()
-                        .push()
-                        .setValue(new ChatMessages(chatid,et_input.getText().toString(),
-                                FirebaseAuth.getInstance()
-                                        .getCurrentUser()
-                                        .getDisplayName())
-                        );
-
-                // Clear the input
-                et_input.setText("");
-            }
-        });
+//        bt_send.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                FirebaseDatabase.getInstance()
+//                        .getReference()
+//                        .push()
+//                        .child("Chats")
+//                        .setValue(new ChatMessages(chatid,et_input.getText().toString(),
+//                                FirebaseAuth.getInstance()
+//                                        .getCurrentUser()
+//                                        .getDisplayName())
+//                        );
+//
+//                // Clear the input
+//                et_input.setText("");
+//            }
+//        });
         adapter = new FirebaseListAdapter<ChatMessages>(options) {
             @Override
             protected void populateView(View v, ChatMessages model, int position) {
