@@ -7,11 +7,14 @@ public class ChatMessages {
     private String messageText;
     private String messageUser;
     private long messageTime;
+    private String sellerEmailID;
+    private String customerID;
 
-    public ChatMessages(String chatid,String messageText, String messageUser) {
+    public ChatMessages(String chatid,String messageText, String messageUser,String sellerEmailID,String customerID) {
         this.ChatID=chatid;
         this.messageText = messageText;
         this.messageUser = messageUser;
+        this.sellerEmailID=sellerEmailID;
 
         // Initialize to current time
         messageTime = new Date().getTime();
