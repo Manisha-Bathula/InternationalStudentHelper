@@ -123,12 +123,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                 // do not finish home page. otherwise you can not go back to home page.
                 //finish();
                 break;
-            case  R.id.nav_manage:
-                Intent intent1=new Intent(DashboardActivity.this,ManageActivity.class);
-                startActivity(intent1);
-                // do not finish home page. otherwise you can not go back to home page.
-                //finish();
-                break;
+
             case  R.id.nav_currency:
                 Intent i1=new Intent(DashboardActivity.this,CurrencyConvertorActivity.class);
                 startActivity(i1);

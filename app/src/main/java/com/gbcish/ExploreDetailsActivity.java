@@ -71,6 +71,8 @@ public class ExploreDetailsActivity extends AppCompatActivity {
 
         Intent it =getIntent();
         postModel= (PostModel) it.getSerializableExtra("PostModel");
+        String ptitle = postModel.getPost_title();
+        String pdescription = postModel.getPost_description();
         String pt=postModel.getPost_category();
         String p1t=postModel.getPost_city();
          sellername=postModel.getUser_id();
@@ -143,30 +145,6 @@ public class ExploreDetailsActivity extends AppCompatActivity {
 
         // Adding the Adapter to the ViewPager
         mViewPager.setAdapter(viewPagerAdapter);
-//        RequestOptions requestOptions = new RequestOptions();
-//        requestOptions.placeholder(Utils.getRandomDrawbleColor());
-//        requestOptions.error(Utils.getRandomDrawbleColor());
-//        requestOptions.diskCacheStrategy(DiskCacheStrategy.ALL);
-//        requestOptions.centerCrop();
-//        Glide.with(this)
-//                .load(postModel.getImageUrl().get(0).imageUrl)
-//                .apply(requestOptions)
-//                .listener(new RequestListener<Drawable>() {
-//                    @Override
-//                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
-////                        holder.progressBar.setVisibility(View.GONE);
-//                        return false;
-//                    }
-//
-//                    @Override
-//                    public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
-////                        holder.progressBar.setVisibility(View.GONE);
-//                        return false;
-//                    }
-//
-//                })
-//                .transition(DrawableTransitionOptions.withCrossFade())
-//                .into(post_image);
 
     }
 
@@ -185,16 +163,19 @@ public class ExploreDetailsActivity extends AppCompatActivity {
     public void smsseller(View view) {
         Intent intent = new Intent(Intent.ACTION_SENDTO);
         intent.setData(Uri.parse("smsto:" +phoneNumber)); // This ensures only SMS apps respond
-        intent.putExtra("sms_body", "type your message here ");
+        intent.putExtra("sms_body",
+                "Is the mentioned ad still available. i.e.,  Title: " +postModel.getPost_title() + "  which is posted on " +postModel.getPost_current_date() );
         startActivity(intent);
-
 
     }
 
     public void emailseller(View view) {
         String to= email;
-        String subject="Need Further Information on your ad";
-        String message="type your message Here";
+        String subject="Need Further Information on your below ad which is posted on " +postModel.getPost_current_date();
+        String message="Title: " +postModel.getPost_title()  + "\n"
+                + "Decription: "+postModel.getPost_description() + "\n " + "\n" + "\n" + "Thanks in advance.";
+        Log.d("Email_Title", "emailseller: " +message);
+
         Intent email = new Intent(Intent.ACTION_SEND);
         email.putExtra(Intent.EXTRA_EMAIL, new String[]{ to});
         email.putExtra(Intent.EXTRA_SUBJECT, subject);
