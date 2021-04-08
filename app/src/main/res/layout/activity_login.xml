@@ -19,7 +19,6 @@
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:fontFamily="@font/aclonica"
         android:gravity="center"
         android:text="Login"
@@ -81,8 +80,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:gravity="center"
-        android:text="Not an Existing User? Register"
-        android:textColor="@color/TextWhite" />
+        android:text="Not an Existing User? Register" />
 
 
 </LinearLayout>

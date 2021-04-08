@@ -163,8 +163,8 @@ public class ExploreDetailsActivity extends AppCompatActivity {
     }
 
     public void smsseller(View view) {
-        
-        Intent intent = new Intent(Intent.ACTION_SENDTO);
+
+        Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setData(Uri.parse("smsto:" +phoneNumber)); // This ensures only SMS apps respond
         intent.putExtra("sms_body",
                 "Is the mentioned ad still available. i.e.,  Title: " +postModel.getPost_title() + "  which is posted on " +postModel.getPost_current_date() );
@@ -199,5 +199,13 @@ public class ExploreDetailsActivity extends AppCompatActivity {
                 Toast.makeText(getApplication(), "Permission denied", Toast.LENGTH_SHORT).show();
             }
         }
+    }
+
+    public void textmsgseller(View view) {
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("smsto:" +phoneNumber)); // This ensures only SMS apps respond
+        intent.putExtra("sms_body",
+                "Is the mentioned ad still available. i.e.,  Title: " +postModel.getPost_title() + "  which is posted on " +postModel.getPost_current_date() );
+        startActivity(intent);
     }
 }

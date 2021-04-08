@@ -243,20 +243,17 @@
                     android:layout_marginRight="30dp"
                     android:background="#FFFFFF"
                     android:onClick="callseller"
-                    android:padding="16dp"
+                    android:padding= "16dp"
                     android:src="@drawable/ic_phonecall"
                     android:text="CALL"></ImageButton>
 
                 <ImageButton
                     android:id="@+id/bt_sms_seller"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="30dp"
+                    android:layout_width="1dp"
+                    android:layout_height="1dp"
                     android:onClick="smsseller"
-                    android:background="#FFFFFF"
-                    android:src="@drawable/sms"
-                    android:text="SMS"></ImageButton>
+                    android:background="#FFFFFF">
+                </ImageButton>
 
                 <ImageButton
                     android:id="@+id/bt_email_seller"
@@ -264,12 +261,26 @@
                     android:layout_height="60dp"
                     android:onClick="emailseller"
                     android:layout_marginLeft="30dp"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginRight="30dp"
                     android:background="#FFFFFF"
                     android:src="@drawable/gmail">
 
                 </ImageButton>
+
+                <ImageButton
+                    android:id="@+id/btn_smsseller"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:onClick="textmsgseller"
+                    android:background="#FFFFFF"
+                    android:src="@drawable/sms">
+
+                </ImageButton>
             </LinearLayout>
+
+
 
 
         </LinearLayout>
