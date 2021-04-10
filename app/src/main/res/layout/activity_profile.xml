@@ -179,12 +179,14 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:orientation="horizontal">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:text="Password"
+                    android:visibility="gone"
                     android:textColor="#333"
                     android:textSize="18sp"
                     android:layout_gravity="center_vertical"
@@ -198,6 +200,7 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/edtPPassword"
                         android:gravity="left"
+                        android:visibility="gone"
                         android:inputType="textPassword"
                         android:layout_gravity="center_vertical"
                         android:textColor="#333"
@@ -209,8 +212,8 @@
             <com.github.florent37.shapeofview.shapes.RoundRectView
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                app:shape_roundRect_topRightRadius="10dp"
-                app:shape_roundRect_topLeftRadius="10dp"
+                app:shape_roundRect_bottomLeftRadius="10dp"
+                app:shape_roundRect_bottomRightRadius="10dp"
                 android:id="@+id/ShapeOfViewPSave">
                 <LinearLayout
                     android:layout_width="match_parent"

@@ -199,6 +199,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Rent"
+                            android:visibility="gone"
                             android:inputType="number"
                             android:gravity="left"
                             android:layout_gravity="center_vertical"
@@ -211,10 +212,24 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="City"
+                            android:id="@+id/auto_city"
                             android:textColor="#fff"
                             android:textSize="18sp"
                             android:layout_gravity="center_vertical"
                             android:layout_marginTop="10dp"/>
+                        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                            android:id="@+id/autoCompleteTextViewcity"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:completionThreshold="1"
+                            android:dropDownAnchor="@id/auto_city"
+                            android:hint="City"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:paddingBottom="10dp"
+                            android:textSize="15sp" />
+
+
                         <EditText
                             android:id="@+id/add_location"
                             android:layout_width="match_parent"
@@ -226,7 +241,12 @@
                             android:layout_marginTop="10dp"
                             android:background="@drawable/edtbg"
                             android:hint="City"
+                            android:visibility="gone"
                             android:inputType="text" />
+
+
+
+
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

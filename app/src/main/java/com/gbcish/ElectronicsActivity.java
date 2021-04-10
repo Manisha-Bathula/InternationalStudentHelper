@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -73,7 +74,10 @@ public class ElectronicsActivity extends AppCompatActivity {
     private String category = "Gadget";
     private Boolean imageEmpty = true;
     Spinner sp_rent;
+    String postCity=null;
     ArrayList<String> proniceNames=new ArrayList<>();
+    AutoCompleteTextView autoCompleteTextView_city;
+    ArrayList<String> cityList=new ArrayList<>();
 
     Calendar calender = Calendar.getInstance();
 
@@ -83,6 +87,37 @@ public class ElectronicsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_electronics);
 
         getSupportActionBar().hide();
+
+        autoCompleteTextView_city=(AutoCompleteTextView) findViewById(R.id.autoCompleteTextViewcity);
+
+        cityList.add("Barrier");
+        cityList.add("Brampton");
+        cityList.add("Calgary");
+        cityList.add("Edmonton");
+        cityList.add("Hamilton");
+        cityList.add("London");
+        cityList.add("Mississauga");
+        cityList.add("Oshawa");
+        cityList.add("Quebec City");
+        cityList.add("Toronto");
+        cityList.add("Vancouver");
+        cityList.add("Victoria");
+        cityList.add("Windsor");
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>
+                (this,android.R.layout.select_dialog_item, cityList);
+
+        autoCompleteTextView_city.setThreshold(2);
+        autoCompleteTextView_city.setAdapter(adapter);
+
+
+        autoCompleteTextView_city.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                autoCompleteTextView_city.showDropDown();
+            }
+        });
+
 
         postTitle = findViewById(R.id.title);
         postDescription = findViewById(R.id.w_r_u_selling);
@@ -106,6 +141,19 @@ public class ElectronicsActivity extends AppCompatActivity {
         proniceNames.add("Alberta");
         proniceNames.add("British Colombia");
         proniceNames.add("Nova Scotia");
+
+
+        autoCompleteTextView_city.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                postCity=adapterView.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
 
         back_img.setOnClickListener(new View.OnClickListener() {
@@ -221,9 +269,9 @@ public class ElectronicsActivity extends AppCompatActivity {
         } else if (postPrice.getText().toString().isEmpty()) {
             postPrice.setError("Please enter Price");
             postPrice.requestFocus();
-        } else if (postLocation.getText().toString().isEmpty()) {
-            postLocation.setError("Please enter city");
-            postLocation.requestFocus();
+        } else if (postCity==null) {
+           Toast.makeText(this,"Please enter city",Toast.LENGTH_SHORT).show();
+
         }else if (edt_street.getText().toString().isEmpty()){
             edt_street.setError("Please enter street name");
             edt_street.requestFocus();
@@ -277,7 +325,7 @@ public class ElectronicsActivity extends AppCompatActivity {
                 postCat,
                 postDescription.getText().toString(),
                 price,
-                postLocation.getText().toString(),
+                postCity,
                 edt_street.getText().toString(),
                 postProvinance,
                 edt_postal.getText().toString(),
@@ -294,6 +342,7 @@ public class ElectronicsActivity extends AppCompatActivity {
             public void onSuccess(Void aVoid) {
                 postCat = null;
                 postProvinance=null;
+                postCity=null;
                 postTitle.getText().clear();
                 postDescription.getText().clear();
                 postPrice.getText().clear();

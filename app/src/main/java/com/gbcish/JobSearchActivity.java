@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -75,11 +76,15 @@ public class JobSearchActivity extends AppCompatActivity {
     private String category = "Job";
     private Boolean imageEmpty = true;
     String postProvinance=null;
+    String postCity=null;
 
     Calendar calender =Calendar.getInstance();
 
     Spinner sp_rent;
     ArrayList<String> proniceNames=new ArrayList<>();
+    ArrayList<String> cityList=new ArrayList<>();
+    AutoCompleteTextView autoCompleteTextView_city;
+
 
 
 
@@ -126,6 +131,39 @@ public class JobSearchActivity extends AppCompatActivity {
         array = new ArrayList<PostImages>();
         // getSupportActionBar().setTitle("Create Post");
         postalCodeJob = String.valueOf(edt_postal);
+
+
+
+        autoCompleteTextView_city=(AutoCompleteTextView) findViewById(R.id.autoCompleteTextViewcity);
+
+        cityList.add("Barrier");
+        cityList.add("Brampton");
+        cityList.add("Calgary");
+        cityList.add("Edmonton");
+        cityList.add("Hamilton");
+        cityList.add("London");
+        cityList.add("Mississauga");
+        cityList.add("Oshawa");
+        cityList.add("Quebec City");
+        cityList.add("Toronto");
+        cityList.add("Vancouver");
+        cityList.add("Victoria");
+        cityList.add("Windsor");
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>
+                (this,android.R.layout.select_dialog_item, cityList);
+
+        autoCompleteTextView_city.setThreshold(2);
+        autoCompleteTextView_city.setAdapter(adapter);
+
+
+        autoCompleteTextView_city.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                autoCompleteTextView_city.showDropDown();
+            }
+        });
+
 
         proniceNames.add("Ontario");
         proniceNames.add("Quebec");
@@ -186,6 +224,18 @@ public class JobSearchActivity extends AppCompatActivity {
             }
         });
 
+
+        autoCompleteTextView_city.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                postCity=adapterView.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
         postPrice.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -239,9 +289,9 @@ public class JobSearchActivity extends AppCompatActivity {
         } else if (postPrice.getText().toString().isEmpty()) {
             postPrice.setError("Please enter salary");
             postPrice.requestFocus();
-        } else if (postLocation.getText().toString().isEmpty()) {
-            postLocation.setError("Please enter city");
-            postLocation.requestFocus();
+        } else if (postCity==null) {
+            Toast.makeText(this,"Please enter city",Toast.LENGTH_SHORT).show();
+
         }else if (edt_street.getText().toString().isEmpty()){
             edt_street.setError("Please enter street name");
             edt_street.requestFocus();
@@ -294,7 +344,7 @@ public class JobSearchActivity extends AppCompatActivity {
                 postCat,
                 postDescription.getText().toString(),
                 price,
-                postLocation.getText().toString(),
+                postCity,
                 edt_street.getText().toString(),
                 postProvinance,
                 edt_postal.getText().toString(),
@@ -314,7 +364,7 @@ public class JobSearchActivity extends AppCompatActivity {
                 postTitle.getText().clear();
                 postDescription.getText().clear();
                 postPrice.getText().clear();
-                postLocation.getText().clear();
+                postCity=null;
                 edt_postal.getText().clear();
                 edt_province.getText().clear();
                 edt_street.getText().clear();
