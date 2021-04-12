@@ -21,7 +21,10 @@ import com.firebase.ui.database.FirebaseListOptions;
 import com.gbcish.models.ChatMessages;
 import com.gbcish.models.Messages;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -113,7 +116,10 @@ public class ChatActivity2 extends AppCompatActivity {
                     messageMap.put("type","text");
                     messageMap.put("time", ServerValue.TIMESTAMP);
                     messageMap.put("from",mCurrentUserId);
-
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    messageMap.put("messagetouser",user.getDisplayName());
+                    AuthCredential credential = EmailAuthProvider
+                            .getCredential("user@example.com", "password1234");
                     Map messageUserMap = new HashMap();
                     messageUserMap.put(current_user_ref+"/"+push_id,messageMap);
                     messageUserMap.put(chat_user_ref+"/"+push_id,messageMap);

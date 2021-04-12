@@ -43,6 +43,7 @@
     <string name="banner_ad_unit">ca-app-pub-9237984898458804/8589045036</string>
     <string name="title_activity_chat_box">ChatBoxActivity</string>
     <string name="title_activity_chat2">ChatActivity2</string>
+    <string name="title_activity_chat_names">ChatNames</string>
 
 
 </resources>
