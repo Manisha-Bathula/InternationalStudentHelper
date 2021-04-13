@@ -12,6 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.internationalstudenthelper.R;
 import com.gbcish.models.Messages;
 import com.gbcish.models.PostModel;
+import com.gbcish.models.ReceiveChatMessages;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -27,14 +30,15 @@ public class ChatNames extends AppCompatActivity {
 
     private TextView mTextView;
     private RecyclerView recycChatNames;
-    private ArrayList<Messages> chatNames;
+    private ArrayList<ReceiveChatMessages> chatNames;
     private DatabaseReference databaseRef;
+    private String UUID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_names);
-
+        final FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
         chatNames=new ArrayList<>();
         recycChatNames=findViewById(R.id.recycChatNames);
         databaseRef = FirebaseDatabase.getInstance().getReference();
@@ -46,11 +50,16 @@ public class ChatNames extends AppCompatActivity {
 
                 for (DataSnapshot snap: snapshot.getChildren()){
                     HashMap<String,String> maps=new HashMap();
-                            snap.getValue();
-                    Log.d("Categories: ", String.valueOf(snap.getValue()));
-                    com.gbcish.models.Messages c = snap.getValue(Messages.class);
-                    Log.d("Categories: ", c.getFrom() + " " + c.getFrom());
-                    chatNames.add(c);
+                            UUID = snap.getKey();
+
+                            if (currentFirebaseUser.getUid().equals(UUID)){
+                                final DatabaseReference Messages = databaseRef.child("messages").child(UUID);
+
+
+                            }
+//                    Log.d("Categories: ", String.valueOf(snap.getValue()));
+//                   ReceiveChatMessages c = (ReceiveChatMessages) snap.getValue();
+//                    chatNames.add(c);
                 }
 
 

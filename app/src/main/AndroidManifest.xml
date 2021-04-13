@@ -30,11 +30,7 @@
         <activity
             android:name="com.gbcish.ChatNames"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
             android:label="@string/title_activity_chat_names" >
         </activity>
         <!--
@@ -102,7 +98,11 @@
         <activity
             android:name="com.gbcish.SplashActivity"
             android:theme="@style/NoTheme" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <meta-data
