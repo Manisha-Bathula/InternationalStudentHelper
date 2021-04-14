@@ -149,6 +149,12 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                 //finish();
                 break;
 
+            case R.id.nav_help:
+                Intent intenthelp = new Intent(DashboardActivity.this, HelpActivity.class);
+                startActivity(intenthelp);
+                break;
+
+
             case R.id.nav_profile:
                 Intent intent3 = new Intent(DashboardActivity.this, ProfileActivity.class);
                 startActivity(intent3);

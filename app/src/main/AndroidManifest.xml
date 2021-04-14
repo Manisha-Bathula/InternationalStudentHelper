@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.internationalstudenthelper" >
+    package="com.example.internationalstudenthelper">
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
@@ -24,13 +24,11 @@
         android:label="GBC ISH"
         android:roundIcon="@drawable/applogo"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
-
-
+        android:theme="@style/AppTheme">
+        <activity android:name="com.gbcish.HelpActivity"></activity>
         <activity
             android:name="com.gbcish.ChatNames"
             android:exported="true">
-
             android:label="@string/title_activity_chat_names" >
         </activity>
         <!--
@@ -39,9 +37,7 @@
         -->
         <activity
             android:name="com.gbcish.ChatActivity2"
-            android:label="@string/title_activity_chat2">
-
-        </activity>
+            android:label="@string/title_activity_chat2"></activity>
         <activity android:name="com.gbcish.ChatBoxActivity" />
 
         <meta-data
@@ -72,7 +68,7 @@
         <activity
             android:name="com.gbcish.ExploreActivity"
             android:exported="true"
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
@@ -97,7 +93,7 @@
         <activity android:name="com.gbcish.LoginActivity" />
         <activity
             android:name="com.gbcish.SplashActivity"
-            android:theme="@style/NoTheme" >
+            android:theme="@style/NoTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
