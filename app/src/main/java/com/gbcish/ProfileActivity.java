@@ -19,6 +19,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -75,7 +76,9 @@ public class ProfileActivity extends AppCompatActivity {
     String propic = "";
     String d_id = "", passwords = "", emails = "", names = "", phones = "";
     Dialog dialog;
-
+    LinearLayout llPassword;
+    TextView tvChangepasssword;
+    boolean isopen = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,6 +92,8 @@ public class ProfileActivity extends AppCompatActivity {
         ivcamera = findViewById(R.id.imageViewPcamera);
         ivBack = findViewById(R.id.imageViewPback);
         ivBigPropic = findViewById(R.id.imageViewBigpropic);
+        llPassword = findViewById(R.id.linearlayoutpassword);
+        tvChangepasssword = findViewById(R.id.changepassword);
         ivBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -124,6 +129,18 @@ public class ProfileActivity extends AppCompatActivity {
                     } else {
                         updateprofile(name, email, phone, pass, null);
                     }
+                }
+            }
+        });
+        tvChangepasssword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (isopen){
+                    llPassword.setVisibility(View.GONE);
+                    isopen=false;
+                }else{
+                  llPassword.setVisibility(View.VISIBLE);
+                  isopen = true;
                 }
             }
         });
