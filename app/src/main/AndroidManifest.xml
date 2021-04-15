@@ -38,7 +38,7 @@
                app to run.
         -->
         <activity
-            android:name="com.gbcish.ChatActivity2"
+            android:name="com.gbcish.ChatBox"
             android:label="@string/title_activity_chat2">
 
 

@@ -11,7 +11,7 @@
     <GridLayout
         android:columnCount="1"
         android:gravity="center"
-        android:layout_gravity="center"
+        android:layout_marginTop="120dp"
         android:rowCount="3"
         android:alignmentMode="alignMargins"
         android:columnOrderPreserved="false"
@@ -126,6 +126,23 @@
                 android:textSize="18dp" />
         </LinearLayout>
 
+
+
+
     </androidx.cardview.widget.CardView>
+
+
+
+
     </GridLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="User is allowed to ad post regarding any of the following three optionRental Activities or Job Search related activities or buy/sell electronics."
+        android:padding="20dp"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
 </FrameLayout>

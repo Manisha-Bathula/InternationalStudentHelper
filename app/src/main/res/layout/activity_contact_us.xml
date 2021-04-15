@@ -9,6 +9,15 @@
     android:background="@drawable/bg"
     tools:context="com.gbcish.ContactUsActivity">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="User is allowed to Call or SMS or even Email the customer care GBC for further more information in case he needs to know any."
+        android:padding="20dp"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
 
     <GridLayout
         android:layout_width="match_parent"
