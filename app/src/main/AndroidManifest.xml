@@ -38,8 +38,7 @@
                app to run.
         -->
         <activity
-            android:name="com.gbcish.ChatBox"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:name="com.gbcish.ChatActivity2"
             android:label="@string/title_activity_chat2">
 
         </activity>
@@ -98,8 +97,7 @@
         <activity android:name="com.gbcish.LoginActivity" />
         <activity
             android:name="com.gbcish.SplashActivity"
-            android:theme="@style/NoTheme"
-            >
+            android:theme="@style/NoTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
