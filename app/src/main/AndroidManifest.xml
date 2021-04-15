@@ -43,6 +43,7 @@
 
         </activity>
         <activity android:name="com.gbcish.ChatBoxActivity" />
+        <activity android:name="com.gbcish.HelpActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
