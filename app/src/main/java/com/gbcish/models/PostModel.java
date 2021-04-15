@@ -7,18 +7,18 @@ import java.util.ArrayList;
 public class PostModel implements Serializable {
 
 
-    public String post_title;
-    public String post_category;
-    public String post_description;
-    public String post_rent;
-    public String post_city;
-    public String post_street;
-    public String post_province;
-    public String post_postal_code;
-    public String post_current_date;
-    public String post_pushkey;
-    public String upload_time;
-    public String user_id;
+    private String post_title;
+    private String post_category;
+    private String post_description;
+    private String post_rent;
+    private String post_city;
+    private String post_street;
+    private String post_province;
+    private String post_postal_code;
+    private String post_current_date;
+    private String post_pushkey;
+    private String upload_time;
+    private String user_id;
 
 
     public String getKey() {
@@ -29,8 +29,8 @@ public class PostModel implements Serializable {
         this.key = key;
     }
 
-    public  String key;
-    public ArrayList<PostImages> imageUrl = null;
+    private  String key;
+    private ArrayList<PostImages> imageUrl = null;
     PostModel(){};
 
 

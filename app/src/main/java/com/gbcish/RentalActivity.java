@@ -211,18 +211,26 @@ public class RentalActivity extends AppCompatActivity {
 
             }
         });
-
-        autoCompleteTextView_city.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                postCity=adapterView.getSelectedItem().toString();
-            }
+        autoCompleteTextView_city.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
+            public void onItemClick(AdapterView<?> parent, View arg1, int pos,
+                                    long id) {
+                Toast.makeText(getApplicationContext()," selected"+parent.getItemAtPosition(pos), Toast.LENGTH_LONG).show();
+                postCity= String.valueOf(parent.getItemAtPosition(pos));
             }
         });
+//        autoCompleteTextView_city.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+//                postCity=adapterView.getSelectedItem().toString();
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> adapterView) {
+//
+//            }
+//        });
 
 
         postPrice.addTextChangedListener(new TextWatcher() {

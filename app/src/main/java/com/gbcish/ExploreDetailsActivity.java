@@ -1,14 +1,11 @@
 package com.gbcish;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,26 +16,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.DataSource;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.load.engine.GlideException;
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
-import com.bumptech.glide.request.RequestListener;
-import com.bumptech.glide.request.RequestOptions;
-import com.bumptech.glide.request.target.Target;
 import com.example.internationalstudenthelper.R;
 import com.gbcish.Adapters.ViewPagerAdapter;
-import com.gbcish.CommonFunctions.Utils;
 import com.gbcish.models.PostImages;
 import com.gbcish.models.PostModel;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.ArrayList;
 import android.Manifest;
@@ -62,7 +48,7 @@ public class ExploreDetailsActivity extends AppCompatActivity {
     CollectionReference cities;
     String email = "";
     String phoneNumber = "";
-    private  String sellername,username;
+    private  String sellername,username,useremail,adPostedUserID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,13 +65,15 @@ public class ExploreDetailsActivity extends AppCompatActivity {
         String p1t=postModel.getPost_city();
          sellername=postModel.getUser_id();
 
+        adPostedUserID=postModel.getUser_id();
+
         bt_get_direction=findViewById(R.id.bt_get_direction);
         bt_sms_seller=findViewById(R.id.bt_sms_seller);
         bt_chat_seller=findViewById(R.id.bt_chat_seller);
         bt_chat_seller.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),ChatActivity2.class));
+                startActivity(new Intent(getApplicationContext(), ChatBox.class).putExtra("username",username).putExtra("useremail",useremail).putExtra("adPostedUserID",adPostedUserID));
             }
         });
 

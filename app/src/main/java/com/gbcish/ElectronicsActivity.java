@@ -142,18 +142,27 @@ public class ElectronicsActivity extends AppCompatActivity {
         proniceNames.add("British Colombia");
         proniceNames.add("Nova Scotia");
 
-
-        autoCompleteTextView_city.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                postCity=adapterView.getSelectedItem().toString();
-            }
+        autoCompleteTextView_city.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
+            public void onItemClick(AdapterView<?> parent, View arg1, int pos,
+                                    long id) {
+                Toast.makeText(getApplicationContext()," selected"+parent.getItemAtPosition(pos), Toast.LENGTH_LONG).show();
+                postCity= String.valueOf(parent.getItemAtPosition(pos));
             }
         });
+
+//        autoCompleteTextView_city.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+//                postCity=adapterView.getSelectedItem().toString();
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> adapterView) {
+//
+//            }
+//        });
 
 
         back_img.setOnClickListener(new View.OnClickListener() {
@@ -335,7 +344,7 @@ public class ElectronicsActivity extends AppCompatActivity {
                 currentuser,
                 category,
                 array
-        );
+                );
 
         mDatabase.child("AddElectronicsPosts").child(key).setValue(user_posts).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override

@@ -1,28 +1,26 @@
 package com.gbcish;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.internationalstudenthelper.R;
 import com.firebase.ui.database.FirebaseListAdapter;
 import com.firebase.ui.database.FirebaseListOptions;
 import com.gbcish.models.ChatMessages;
 import com.gbcish.models.Messages;
+import com.gbcish.models.ReceiveChatMessages;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -37,13 +35,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ChatActivity2 extends AppCompatActivity {
+public class ChatBox extends AppCompatActivity {
 
     private TextView mTextView;
     private FloatingActionButton btChat;
     private EditText et_input;
     String mCurrentUserId;  // login currently
-    String mChatUser="tUxtgCHB7EfyXAahGGeEoMgAoY13"; // venkatpardha
+    String mChatUser; // venkatpardha
     private FirebaseAuth mAuth;
     private DatabaseReference mRootReference;
     DatabaseReference mDatabaseReference;
@@ -58,7 +56,10 @@ public class ChatActivity2 extends AppCompatActivity {
     private ListView mMessagesList;
     private ArrayList<String> messagesList=new ArrayList<>();
      ArrayAdapter aadapter;
-
+    private String username="";
+    private String useremail="";
+    private String adPostedUserID;
+    private ReceiveChatMessages receiveChatMessages;
 
 
 
@@ -67,6 +68,25 @@ public class ChatActivity2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+//        Toolbar toolbar = findViewById(R.id.toolbar2);
+//        setSupportActionBar(toolbar);
+//
+//        // toolbar fancy stuff
+//        getSupportActionBar().setTitle("Chat Box");
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        Intent i=getIntent();
+        username=i.getStringExtra("username");
+        useremail=i.getStringExtra("useremail");
+        Log.d("useremail",""+useremail);
+        adPostedUserID=i.getStringExtra("adPostedUserID");
+        receiveChatMessages= (ReceiveChatMessages) i.getSerializableExtra("messagesreceived");
+       if(receiveChatMessages!=null) {
+           mChatUser = receiveChatMessages.getToUuid();
+       }
+       else {
+           mChatUser=adPostedUserID;
+       }
         et_input=findViewById(R.id.et_input);
 
         btChat=findViewById(R.id.fab);
@@ -87,7 +107,7 @@ public class ChatActivity2 extends AppCompatActivity {
         btChat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String message = et_input.getText().toString();
+                String message = ""+FirebaseAuth.getInstance().getCurrentUser().getDisplayName()+": "+et_input.getText().toString();
                 if(!TextUtils.isEmpty(message)){
 
 
@@ -106,7 +126,7 @@ public class ChatActivity2 extends AppCompatActivity {
                         e.printStackTrace();
                     }
 
-                    Toast.makeText(ChatActivity2.this, ""+mCurrentUserId, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ChatBox.this, ""+mCurrentUserId, Toast.LENGTH_SHORT).show();
 
 
 
@@ -116,10 +136,10 @@ public class ChatActivity2 extends AppCompatActivity {
                     messageMap.put("type","text");
                     messageMap.put("time", ServerValue.TIMESTAMP);
                     messageMap.put("from",mCurrentUserId);
+                    messageMap.put("messagefromusername",username);
+                    messageMap.put("messagefromuseremail",useremail);
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                    messageMap.put("messagetouser",user.getDisplayName());
-                    AuthCredential credential = EmailAuthProvider
-                            .getCredential("user@example.com", "password1234");
+
                     Map messageUserMap = new HashMap();
                     messageUserMap.put(current_user_ref+"/"+push_id,messageMap);
                     messageUserMap.put(chat_user_ref+"/"+push_id,messageMap);
@@ -132,7 +152,7 @@ public class ChatActivity2 extends AppCompatActivity {
                                 Log.e("CHAT_ACTIVITY","Cannot add message to database");
                             }
                             else{
-                                Toast.makeText(ChatActivity2.this, "Message sent", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ChatBox.this, "Message sent", Toast.LENGTH_SHORT).show();
                                 et_input.setText("");
                             }
 

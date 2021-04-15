@@ -1,13 +1,25 @@
 package com.gbcish.models;
 
-public class ReceiveChatMessages {
+import java.io.Serializable;
+
+public class ReceiveChatMessages implements Serializable {
 
     private String ToUuid;
+    private String FromUuid;
     private Messages messages;
 
-    public ReceiveChatMessages(String toUuid, Messages messages) {
+    public ReceiveChatMessages(String toUuid,String FromUuis, Messages messages) {
         ToUuid = toUuid;
         this.messages = messages;
+        this.FromUuid=FromUuis;
+    }
+
+    public String getFromUuid() {
+        return FromUuid;
+    }
+
+    public void setFromUuid(String fromUuid) {
+        FromUuid = fromUuid;
     }
 
     public String getToUuid() {
