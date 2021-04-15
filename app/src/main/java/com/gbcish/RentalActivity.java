@@ -220,6 +220,16 @@ public class RentalActivity extends AppCompatActivity {
                 postCity= String.valueOf(parent.getItemAtPosition(pos));
             }
         });
+
+//        autoCompleteTextView_city.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View arg1, int pos,
+//                                    long id) {
+//                Toast.makeText(getApplicationContext()," selected"+parent.getItemAtPosition(pos), Toast.LENGTH_LONG).show();
+//                postCity= String.valueOf(parent.getItemAtPosition(pos));
+//            }
+//        });
 //        autoCompleteTextView_city.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 //            @Override
 //            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {

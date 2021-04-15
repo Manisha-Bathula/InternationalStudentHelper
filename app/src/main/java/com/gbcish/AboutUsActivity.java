@@ -2,6 +2,7 @@ package com.gbcish;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,10 +23,21 @@ public class AboutUsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_us);
 
+        Toolbar toolbar = findViewById(R.id.toolbar2);
+        setSupportActionBar(toolbar);
+
+
+
         //Action Bar
         getSupportActionBar().setTitle("About Us");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         webView = (WebView) findViewById(R.id.webview_aboutus);
         webView.setWebViewClient(new WebViewClient());
         webView.loadUrl("file:///android_asset/index.html");
@@ -34,5 +46,8 @@ public class AboutUsActivity extends AppCompatActivity {
         webSettings.setJavaScriptEnabled(true);
     }
 
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 }

@@ -41,16 +41,20 @@
             android:name="com.gbcish.ChatActivity2"
             android:label="@string/title_activity_chat2">
 
+
+
         </activity>
         <activity android:name="com.gbcish.ChatBoxActivity" />
-        <activity android:name="com.gbcish.HelpActivity" />
+        <activity android:name="com.gbcish.HelpActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBlw_dMVWjZf2OyeldB5vcb7EyhtDjRdZY" />
 
         <activity android:name="com.gbcish.MapActivity" />
-        <activity android:name="com.gbcish.AboutUsActivity" />
+        <activity android:name="com.gbcish.AboutUsActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name="com.gbcish.ElectronicsActivity" />
         <activity android:name="com.gbcish.ExploreDetailsActivity" />
         <activity
