@@ -40,7 +40,8 @@ public class ExploreDetailsActivity extends AppCompatActivity {
     ImageView bt_chat_seller;
     ViewPagerAdapter viewPagerAdapter;
     ArrayList<PostImages> images;
-    Button bt_get_direction;
+    //Button bt_get_direction;
+    ImageView bt_get_direction;
     ImageButton bt_sms_seller;
     private static final int REQUEST_CALL = 1;
     FirebaseFirestore db;
